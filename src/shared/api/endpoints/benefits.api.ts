@@ -1,7 +1,7 @@
 import { apiClient } from '../client';
 
 export interface Benefits {
-	tittle: string;
+	title: string;
 	description: string;
 	benefits: string[];
 }
