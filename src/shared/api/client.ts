@@ -1,3 +1,5 @@
+import { getLocale } from 'next-intl/server';
+
 import { API_CONFIG } from './config';
 import type { RequestMethod, RequestOptions } from './types';
 
@@ -17,7 +19,7 @@ async function request<TResponse>(
 	method: RequestMethod,
 	options?: RequestOptions,
 ): Promise<TResponse> {
-	const locale = 'en'; // Replace with actual locale logic
+	const locale = await getLocale();
 
 	const localizedEndpoint = method === 'GET' && locale ? `/${locale}${endpoint}` : endpoint;
 
