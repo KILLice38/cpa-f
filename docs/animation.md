@@ -22,27 +22,27 @@ pnpm add gsap @gsap/react
 Use the `useGSAP` hook inside `'use client'` components. It automatically handles cleanup on unmount:
 
 ```tsx
-"use client";
+'use client';
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { useRef } from "react";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { useRef } from 'react';
 
 export function HeroAnimation() {
-  const container = useRef<HTMLDivElement>(null);
+	const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      gsap.to(".ellipse", {
-        x: 200,
-        duration: 2,
-        ease: "power2.inOut",
-      });
-    },
-    { scope: container },
-  );
+	useGSAP(
+		() => {
+			gsap.to('.ellipse', {
+				x: 200,
+				duration: 2,
+				ease: 'power2.inOut',
+			});
+		},
+		{ scope: container },
+	);
 
-  return <div ref={container}>...</div>;
+	return <div ref={container}>...</div>;
 }
 ```
 

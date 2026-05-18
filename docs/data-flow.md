@@ -12,12 +12,12 @@ We use the native `fetch` API for all data requests. No external data-fetching l
 
 ## Endpoints
 
-| Method | Endpoint            | Usage                | Strategy    |
-| ------ | ------------------- | -------------------- | ----------- |
-| GET    | `/{lang}/benefits`  | Get benefits data    | ISR         |
-| GET    | `/{lang}/multiply`  | Get multiply data    | ISR         |
-| GET    | `/{lang}/tasks`     | Get tasks data       | ISR         |
-| POST   | `/form`             | Send contact data    | Client-side |
+| Method | Endpoint           | Usage             | Strategy    |
+| ------ | ------------------ | ----------------- | ----------- |
+| GET    | `/{lang}/benefits` | Get benefits data | ISR         |
+| GET    | `/{lang}/multiply` | Get multiply data | ISR         |
+| GET    | `/{lang}/tasks`    | Get tasks data    | ISR         |
+| POST   | `/form`            | Send contact data | Client-side |
 
 ## GET — ISR fetch (Server Component)
 

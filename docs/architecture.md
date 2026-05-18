@@ -47,10 +47,10 @@ features/hero-animation/
 
 ```ts
 // correct
-import { HeroAnimation } from '@/features/hero-animation'
+import { HeroAnimation } from '@/features/hero-animation';
 
 // wrong
-import { HeroAnimation } from '@/features/hero-animation/ui/HeroAnimation'
+import { HeroAnimation } from '@/features/hero-animation/ui/HeroAnimation';
 ```
 
 ### Import rule
@@ -66,4 +66,4 @@ So `shared` cannot import from any layer above it; `app` can import from all lay
 ## Key Decisions
 
 - **No "widgets" layer** – the project is too small to justify the extra abstraction
-- **No "pages" layer** – Next.js App Router replaces it and the project has only two pages (404 included). 
+- **No "pages" layer** – Next.js App Router replaces it and the project has only two pages (404 included).
