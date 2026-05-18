@@ -13,11 +13,11 @@ We use Next.js with the App Router. Rendering strategy is mixed: SSG for static 
 
 ## Rendering strategy
 
-| Content | Strategy | Reason |
-|---|---|---|
-| Static sections (hero, layout) | SSG | No data dependency |
-| Benefits, Multiply, Tasks | ISR | Data changes rarely, but must stay fresh |
-| Contact form submission | Client-side fetch | Runtime POST, no prerendering |
+| Content                        | Strategy          | Reason                                   |
+| ------------------------------ | ----------------- | ---------------------------------------- |
+| Static sections (hero, layout) | SSG               | No data dependency                       |
+| Benefits, Multiply, Tasks      | ISR               | Data changes rarely, but must stay fresh |
+| Contact form submission        | Client-side fetch | Runtime POST, no prerendering            |
 
 **ISR** (Incremental Static Regeneration) — pages are pre-built at build time and regenerated in the background after a set interval. This gives near-static performance while keeping content up to date.
 
