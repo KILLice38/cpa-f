@@ -3,7 +3,7 @@ import "../globals.css";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
+import { routing } from "@/shared/i18n";
 
 export const metadata: Metadata = {
   title: "CPA-F",
