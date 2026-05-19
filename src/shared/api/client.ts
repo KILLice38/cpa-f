@@ -1,3 +1,4 @@
+import 'server-only';
 import { getLocale } from 'next-intl/server';
 
 import { API_CONFIG } from './config';
