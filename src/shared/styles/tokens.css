@@ -1,0 +1,44 @@
+:root {
+	--font-family: var(--font-stolzl), sans-serif;
+	--second-family: var(--font-halvar-breit), sans-serif;
+
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+
+	/* ─── Colors: palette (from Figma exports) ─── */
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	--color-purple-500: #9e13e0;
+	--color-purple-600: #9500dc;
+	--color-purple-700: #560080;
+	--color-purple-900: #220032;
+
+	--color-gold-400: #fee97d;
+	--color-orange-500: #d9730d;
+
+	--color-card-bg: #3d0a5c;
+	--color-card-border: rgb(254 233 125 / 35%);
+
+	--color-text-muted: rgb(255 255 255 / 75%);
+	--color-text-subtle: rgb(255 255 255 / 90%);
+
+	/* ─── Layout ─── */
+	--container-max-width: 1220px;
+
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-6: 24px;
+	--space-8: 32px;
+	--space-12: 48px;
+	--space-16: 64px;
+
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 20px;
+	--radius-pill: 999px;
+}

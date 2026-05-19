@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
+import { fontHalvarBreit, fontStolzl } from '@/shared/fonts';
 import { routing } from '@/shared/i18n';
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default async function RootLayout({
 	setRequestLocale(locale);
 
 	return (
-		<html lang={locale}>
+		<html lang={locale} className={`${fontHalvarBreit.variable} ${fontStolzl.variable}`}>
 			<body>
 				<NextIntlClientProvider>{children}</NextIntlClientProvider>
 			</body>
