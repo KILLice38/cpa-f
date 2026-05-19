@@ -36,6 +36,7 @@ const eslintConfig = defineConfig([
 						'@/shared/*',
 						'@/app/**',
 						'next/**',
+						'next-intl/**',
 						'react-dom/**',
 					],
 				},
