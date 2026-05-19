@@ -24,12 +24,12 @@ async function request<TResponse>(
 	const localizedEndpoint = method === 'GET' && locale ? `/${locale}${endpoint}` : endpoint;
 
 	const response = await fetch(`${API_CONFIG.baseUrl}${localizedEndpoint}`, {
+		...options,
 		method,
 		headers: {
 			...API_CONFIG.headers,
 			...options?.headers,
 		},
-		...options,
 	});
 
 	if (!response.ok) {
