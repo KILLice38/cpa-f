@@ -1,0 +1,27 @@
+.root {
+	display: inline-flex;
+	align-items: center;
+	padding: 10px;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--text-md);
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.part {
+	color: var(--color-text-primary);
+	transition: color 0.2s;
+}
+
+.partActive {
+	color: var(--secondary-color);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	text-decoration-skip-ink: none;
+}
+
+.separator {
+	color: var(--secondary-color);
+	user-select: none;
+}
