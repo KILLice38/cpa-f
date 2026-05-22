@@ -9,9 +9,5 @@ export type SectionTitleProps = {
 };
 
 export function SectionTitle({ children, className }: SectionTitleProps) {
-	return (
-		<header className={clsx(styles.header, className)}>
-			<h2 className={styles.title}>{children}</h2>
-		</header>
-	);
+	return <h2 className={clsx(styles.title, className)}>{children}</h2>;
 }
