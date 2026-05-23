@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import styles from './index.module.css';
+import styles from './Card.module.css';
 
 type CardProps =
 	| { variant: 'benefit'; children: React.ReactNode }
