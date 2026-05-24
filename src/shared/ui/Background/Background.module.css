@@ -1,0 +1,122 @@
+@property --spot-x {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 100%;
+}
+
+@property --spot-y {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 20%;
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.hero {
+	background: var(--gradient-bg-primary);
+}
+
+.tasks {
+	background: var(--gradient-bg-secondary);
+}
+
+.grid {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background-image: url('../../assets/bg/bg-sized.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	--background-spotlight-rx: 25%;
+	--background-spotlight-ry: 25%;
+	--background-spotlight-mask-core: 28%;
+	--background-spotlight-mask-feather: 92%;
+	--background-spotlight-duration: 28s;
+
+	--spot-x: 100%;
+	--spot-y: 20%;
+
+	mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+	-webkit-mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+	animation: spotlightMove var(--background-spotlight-duration) ease-in-out infinite;
+}
+
+/*
+ * Траектория с паузами: правый верх → левый центр → правый низ → левый центр.
+ * Плато 0–12%, 25–37% … — стояние в точке; между ними — переезд (~13%).
+ */
+@keyframes spotlightMove {
+	0%,
+	12% {
+		--spot-x: 100%;
+		--spot-y: 20%;
+	}
+
+	25%,
+	37% {
+		--spot-x: 10%;
+		--spot-y: 50%;
+	}
+
+	50%,
+	62% {
+		--spot-x: 100%;
+		--spot-y: 90%;
+	}
+
+	75%,
+	87% {
+		--spot-x: 10%;
+		--spot-y: 50%;
+	}
+
+	100% {
+		--spot-x: 100%;
+		--spot-y: 20%;
+	}
+}
+
+.ellipse {
+	position: absolute;
+	z-index: 0;
+	bottom: -400px;
+	left: -512px;
+	width: 1188px;
+	height: 1187px;
+	border-radius: 100%;
+	background: var(--gradient-radial);
+	filter: blur(40px);
+}
+
+.ellipseRight {
+	top: -400px;
+	right: -234px;
+	bottom: auto;
+	left: auto;
+}
