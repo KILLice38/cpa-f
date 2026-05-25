@@ -1,6 +1,5 @@
 'use client';
-import { Logo } from '@/shared/ui';
-
+import { FormDialog } from '../FormDialog';
 import styles from './SuccessForm.module.css';
 
 type SuccessFormProps = {
@@ -9,11 +8,7 @@ type SuccessFormProps = {
 
 export function SuccessForm({ onClose }: SuccessFormProps) {
 	return (
-		<div className={styles.form}>
-			<button type="button" className={styles.close} onClick={onClose} aria-label="Close">
-				x
-			</button>
-			<Logo size="form" variant="primary" className={styles.logo} />
+		<FormDialog onClose={onClose} className={styles.form}>
 			<div className={styles.content}>
 				<h2 className={styles.title}>WE HAVE RECEIVED YOUR APPLICATION!</h2>
 				<p className={styles.text}>We will process your request and get in touch with you</p>
@@ -21,6 +16,6 @@ export function SuccessForm({ onClose }: SuccessFormProps) {
 			<button type="button" className={styles.done} onClick={onClose} aria-label="Close dialog">
 				Done
 			</button>
-		</div>
+		</FormDialog>
 	);
 }

@@ -1,9 +1,7 @@
-.form {
+.shell {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width: 560px;
 	padding: 60px 30px;
 	background: #ffffff;
 	border: 1px solid var(--primary-color);
@@ -26,34 +24,10 @@
 
 .logo {
 	display: block;
+	margin: 0 auto;
 }
 
-.content {
-	margin-top: 59px;
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-5);
-	text-align: center;
-}
-
-.title {
-	font-family: var(--second-family);
-	font-size: var(--text-md);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-text-secondary);
-	margin: 0;
-}
-
-.text {
-	font-family: var(--second-family);
-	font-size: var(--text-md);
-	font-weight: var(--font-weight-regular);
-	color: var(--color-text-secondary);
-	margin: 0;
-}
-
-.done {
-	margin-top: 49px;
+.action {
 	padding: 9px 40px 10px;
 	font-family: var(--second-family);
 	font-size: var(--text-xs);
@@ -66,23 +40,13 @@
 }
 
 @media (max-width: 768px) {
-	.form {
+	.shell {
 		padding: 60px 20px 57px;
-		width: 100%;
 	}
 
 	.close {
 		top: 7.5px;
 		right: var(--space-3);
 		font-size: var(--text-md);
-	}
-
-	.content {
-		margin-top: 40px;
-	}
-
-	.title,
-	.text {
-		font-size: var(--text-sm);
 	}
 }

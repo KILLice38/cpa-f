@@ -1,7 +1,8 @@
 'use client';
-import { Logo, Select, type SelectOption } from '@/shared/ui';
+import { Select, type SelectOption } from '@/shared/ui';
 
 import styles from './ApplicationForm.module.css';
+import { FormDialog } from '../FormDialog';
 
 const CONTACT_METHODS: SelectOption[] = [
 	{ value: 'Instagram', label: 'Instagram' },
@@ -28,11 +29,7 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 	};
 
 	return (
-		<div className={styles.form}>
-			<button type="button" className={styles.close} onClick={onClose} aria-label="Close">
-				x
-			</button>
-			<Logo size="form" variant="primary" className={styles.logo} />
+		<FormDialog onClose={onClose} className={styles.form}>
 			<p className={styles.hint}>
 				Fields with an asterisk (<span className={styles.span}>*</span>) are mandatory
 			</p>
@@ -70,6 +67,6 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 					Submit
 				</button>
 			</form>
-		</div>
+		</FormDialog>
 	);
 }
