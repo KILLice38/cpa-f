@@ -1,20 +1,19 @@
 'use client';
-import clsx from 'clsx';
-import { useState } from 'react';
-
-import { Logo } from '@/shared/ui';
+import { Logo, Select, type SelectOption } from '@/shared/ui';
 
 import styles from './ApplicationForm.module.css';
 
-const CONTACT_METHODS = ['Instagram', 'Telegram', 'LinkedIn'];
+const CONTACT_METHODS: SelectOption[] = [
+	{ value: 'Instagram', label: 'Instagram' },
+	{ value: 'Telegram', label: 'Telegram' },
+	{ value: 'LinkedIn', label: 'LinkedIn' },
+];
 
 type ApplicationFormProps = {
 	onClose: () => void;
 };
 
 export function ApplicationForm({ onClose }: ApplicationFormProps) {
-	const [isSelectOpen, setIsSelectOpen] = useState(false);
-
 	const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
@@ -28,7 +27,7 @@ export function ApplicationForm({ onClose }: ApplicationFormProps) {
 
 	return (
 		<div className={styles.form}>
-			<button type="button" className={styles.close} onClick={onClose}>
+			<button type="button" className={styles.close} onClick={onClose} aria-label="Close">
 				x
 			</button>
 			<Logo size="form" variant="primary" className={styles.logo} />
@@ -37,38 +36,28 @@ export function ApplicationForm({ onClose }: ApplicationFormProps) {
 			</p>
 			<form className={styles.applicationForm} onSubmit={handleSubmit}>
 				<div className={styles.fields}>
-					<input name="name" type="text" placeholder="Your Name" className={styles.input} />
+					<input
+						name="name"
+						type="text"
+						placeholder="Your Name"
+						aria-label="Your Name"
+						className={styles.input}
+					/>
 					<div className={styles.row}>
 						<div className={styles.fieldWrap}>
-							<div className={styles.selectWrapper}>
-								<select
-									className={styles.select}
-									name="contactMethod"
-									defaultValue=""
-									required
-									onFocus={() => setIsSelectOpen(true)}
-									onBlur={() => setIsSelectOpen(false)}
-								>
-									<option value="" disabled>
-										Contact Method
-									</option>
-									{CONTACT_METHODS.map((m) => (
-										<option key={m} value={m}>
-											{m}
-										</option>
-									))}
-								</select>
-								<span
-									className={clsx(styles.selectArrow, isSelectOpen && styles.selectArrowOpen)}
-									aria-hidden="true"
-								/>
-							</div>
+							<Select
+								name="contactMethod"
+								options={CONTACT_METHODS}
+								placeholder="Contact Method"
+								required
+							/>
 						</div>
 						<div className={styles.fieldWrap}>
 							<input
 								name="contact"
 								type="text"
 								placeholder="Your Contact"
+								aria-label="Your Contact"
 								className={styles.input}
 								required
 							/>

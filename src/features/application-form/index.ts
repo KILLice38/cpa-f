@@ -1,1 +1,1 @@
-export { ApplicationForm } from './ui/ApplicationForm';
+export { ApplicationForm } from './ui';
