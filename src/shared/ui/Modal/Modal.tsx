@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 import { createPortal } from 'react-dom';
 
 import styles from './Modal.module.css';
@@ -11,11 +11,13 @@ type ModalProps = {
 };
 
 export function Modal({ isOpen, onClose, children }: ModalProps) {
+	const handleClose = useEffectEvent(onClose);
+
 	useEffect(() => {
 		if (!isOpen) return;
 
 		const handleKey = (e: KeyboardEvent) => {
-			if (e.key === 'Escape') onClose();
+			if (e.key === 'Escape') handleClose();
 		};
 
 		document.addEventListener('keydown', handleKey);
@@ -25,7 +27,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
 			document.removeEventListener('keydown', handleKey);
 			document.body.style.overflow = '';
 		};
-	}, [isOpen, onClose]);
+	}, [isOpen]);
 
 	if (!isOpen) return null;
 
