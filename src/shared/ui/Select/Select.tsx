@@ -14,10 +14,18 @@ type SelectProps = {
 	options: SelectOption[];
 	placeholder?: string;
 	required?: boolean;
+	disabled?: boolean;
 	className?: string;
 };
 
-export function Select({ name, options, placeholder, required = true, className }: SelectProps) {
+export function Select({
+	name,
+	options,
+	placeholder,
+	required = true,
+	disabled = false,
+	className,
+}: SelectProps) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selected, setSelected] = useState<SelectOption | null>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -56,7 +64,7 @@ export function Select({ name, options, placeholder, required = true, className 
 			<button
 				type="button"
 				className={clsx(styles.trigger, isOpen && styles.triggerOpen)}
-				onClick={() => setIsOpen((prev) => !prev)}
+				onClick={() => !disabled && setIsOpen((prev) => !prev)}
 				onKeyDown={(e) => {
 					if (e.key === 'Escape' && isOpen) {
 						e.stopPropagation();
@@ -65,6 +73,7 @@ export function Select({ name, options, placeholder, required = true, className 
 				}}
 				aria-haspopup="listbox"
 				aria-expanded={isOpen}
+				disabled={disabled}
 			>
 				<span className={clsx(styles.triggerText, !selected && styles.placeholder)}>
 					{selected?.label ?? placeholder}
