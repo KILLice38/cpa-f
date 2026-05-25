@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
 
+import { Container } from '../Container';
 import styles from './Header.module.css';
 
 type HeaderProps = {
@@ -9,5 +10,9 @@ type HeaderProps = {
 };
 
 export function Header({ children, className }: HeaderProps) {
-	return <header className={clsx(styles.header, className)}>{children}</header>;
+	return (
+		<header className={clsx(styles.header, className)}>
+			<Container>{children}</Container>
+		</header>
+	);
 }
