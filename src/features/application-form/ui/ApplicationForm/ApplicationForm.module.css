@@ -34,6 +34,12 @@
 	gap: 7px;
 }
 
+.column {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
 .fieldWrap {
 	position: relative;
 }
@@ -52,16 +58,16 @@
 		pointer-events: none;
 	}
 
-	.row .fieldWrap:last-child::after {
+	.row .column:last-child .fieldWrap::after {
 		left: 123px;
 	}
 
-	.row .fieldWrap:first-child:has(button[aria-expanded='true'])::after,
-	.row .fieldWrap:first-child:has([data-has-value='true'])::after {
+	.row .column:first-child .fieldWrap:has(button[aria-expanded='true'])::after,
+	.row .column:first-child .fieldWrap:has([data-has-value='true'])::after {
 		display: none;
 	}
 
-	.row .fieldWrap:last-child:has(input:not(:placeholder-shown))::after {
+	.row .column:last-child .fieldWrap:has(input:not(:placeholder-shown))::after {
 		display: none;
 	}
 
@@ -70,11 +76,11 @@
 			font-size: var(--text-xs);
 		}
 
-		.row .fieldWrap:first-child::after {
+		.row .column:first-child .fieldWrap::after {
 			left: 134px;
 		}
 
-		.row .fieldWrap:last-child::after {
+		.row .column:last-child .fieldWrap::after {
 			left: 110px;
 		}
 	}
