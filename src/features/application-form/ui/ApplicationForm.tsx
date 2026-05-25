@@ -11,9 +11,10 @@ const CONTACT_METHODS: SelectOption[] = [
 
 type ApplicationFormProps = {
 	onClose: () => void;
+	onSuccess?: () => void;
 };
 
-export function ApplicationForm({ onClose }: ApplicationFormProps) {
+export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 	const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
@@ -23,6 +24,7 @@ export function ApplicationForm({ onClose }: ApplicationFormProps) {
 			contact: data.get('contact'),
 		});
 		// TODO: Api call
+		onSuccess?.();
 	};
 
 	return (
