@@ -3,7 +3,7 @@ import { useTransition, useState } from 'react';
 
 import { Select, type SelectOption } from '@/shared/ui';
 
-import { submitApplication } from '../../actions';
+import { submitApplication } from '../../api';
 import { FormDialog } from '../FormDialog';
 import styles from './ApplicationForm.module.css';
 
