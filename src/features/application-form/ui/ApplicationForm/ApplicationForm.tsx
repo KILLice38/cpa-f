@@ -54,25 +54,33 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 			</p>
 			<form className={styles.applicationForm} onSubmit={handleSubmit} noValidate>
 				<div className={styles.fields}>
-					<input
-						name="name"
-						type="text"
-						placeholder="Your Name"
-						aria-label="Your Name"
-						className={styles.input}
-						maxLength={100}
-						disabled={isPending}
-					/>
+					<div className={styles.fieldWrap}>
+						<input
+							name="name"
+							type="text"
+							placeholder=" "
+							aria-label="Your Name"
+							className={styles.input}
+							maxLength={100}
+							disabled={isPending}
+						/>
+						<label className={styles.label} aria-hidden="true">
+							Your Name
+						</label>
+					</div>
 					<div className={styles.row}>
 						<div className={styles.column}>
 							<div className={styles.fieldWrap}>
 								<Select
 									name="contactMethod"
 									options={CONTACT_OPTIONS}
-									placeholder="Contact Method"
+									placeholder=" "
 									required
 									disabled={isPending}
 								/>
+								<label className={styles.label} aria-hidden="true">
+									Contact Method <span className={styles.span}>*</span>
+								</label>
 							</div>
 							{fieldErrors.contactMethod && (
 								<p className={styles.error}>{fieldErrors.contactMethod}</p>
@@ -83,13 +91,16 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 								<input
 									name="contact"
 									type="text"
-									placeholder="Your Contact"
+									placeholder=" "
 									aria-label="Your Contact"
 									className={styles.input}
 									minLength={2}
 									maxLength={200}
 									disabled={isPending}
 								/>
+								<label className={styles.label} aria-hidden="true">
+									Your Contact <span className={styles.span}>*</span>
+								</label>
 							</div>
 							{fieldErrors.contact && <p className={styles.error}>{fieldErrors.contact}</p>}
 						</div>

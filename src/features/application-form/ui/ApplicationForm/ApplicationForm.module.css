@@ -44,46 +44,50 @@
 	position: relative;
 }
 
-@supports selector(:has(*)) {
-	.fieldWrap::after {
-		content: '*';
-		position: absolute;
-		top: 50%;
-		left: 151px;
-		transform: translateY(-50%);
-		color: var(--primary-color);
-		font-family: var(--font-family);
-		font-size: var(--text-sm);
-		font-weight: var(--font-weight-regular);
-		pointer-events: none;
+.fieldWrap button {
+	padding-top: 7.5px;
+	padding-bottom: 7.5px;
+	min-height: calc(var(--text-sm) + 21px);
+}
+
+.label {
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	font-family: var(--font-family);
+	font-size: var(--text-sm);
+	font-weight: var(--font-weight-light);
+	color: var(--color-text-secondary);
+	white-space: nowrap;
+	transition:
+		opacity 0.15s,
+		visibility 0.15s;
+}
+
+.fieldWrap input:focus ~ .label,
+.fieldWrap input:not(:placeholder-shown) ~ .label {
+	opacity: 0;
+	visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.label {
+		transition: none;
 	}
+}
 
-	.row .column:last-child .fieldWrap::after {
-		left: 123px;
+@media (max-width: 768px) {
+	.label {
+		font-size: var(--text-xs);
 	}
+}
 
-	.row .column:first-child .fieldWrap:has(button[aria-expanded='true'])::after,
-	.row .column:first-child .fieldWrap:has([data-has-value='true'])::after {
-		display: none;
-	}
-
-	.row .column:last-child .fieldWrap:has(input:not(:placeholder-shown))::after {
-		display: none;
-	}
-
-	@media (max-width: 768px) {
-		.fieldWrap::after {
-			font-size: var(--text-xs);
-		}
-
-		.row .column:first-child .fieldWrap::after {
-			left: 134px;
-		}
-
-		.row .column:last-child .fieldWrap::after {
-			left: 110px;
-		}
-	}
+.fieldWrap:has([data-has-value='true']) .label,
+.fieldWrap:has(button[aria-expanded='true']) .label {
+	opacity: 0;
+	visibility: hidden;
 }
 
 .input {
@@ -140,6 +144,18 @@
 	}
 
 	.input {
+		font-size: var(--text-xs);
+		padding-top: 6.5px;
+		padding-bottom: 6.5px;
+	}
+
+	.fieldWrap button {
+		padding-top: 6.5px;
+		padding-bottom: 6.5px;
+		min-height: calc(var(--text-xs) + 19px);
+	}
+
+	.error {
 		font-size: var(--text-xs);
 	}
 }
