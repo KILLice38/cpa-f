@@ -4,5 +4,6 @@ export { NavLink } from './NavLink';
 export { Section } from './Section';
 export { SectionTitle } from './SectionTitle';
 export { Header } from './Header';
+export { Logo } from './Logo';
 export { Card } from './Card/';
 export { Button } from './Button';
