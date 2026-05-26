@@ -3,20 +3,12 @@ import { useTransition, useState } from 'react';
 
 import { Select, type SelectOption } from '@/shared/ui';
 
-import { submitApplication } from '../../api';
-import { FormDialog } from '../FormDialog';
 import styles from './ApplicationForm.module.css';
+import { submitApplication } from '../../api';
+import { CONTACT_METHODS, validateApplication, type ApplicationErrors } from '../../model';
+import { FormDialog } from '../FormDialog';
 
-const CONTACT_METHODS: SelectOption[] = [
-	{ value: 'Instagram', label: 'Instagram' },
-	{ value: 'Telegram', label: 'Telegram' },
-	{ value: 'LinkedIn', label: 'LinkedIn' },
-];
-
-type FieldErrors = {
-	contactMethod?: string;
-	contact?: string;
-};
+const CONTACT_OPTIONS: SelectOption[] = CONTACT_METHODS.map((m) => ({ value: m, label: m }));
 
 type ApplicationFormProps = {
 	onClose: () => void;
@@ -26,20 +18,17 @@ type ApplicationFormProps = {
 export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 	const [isPending, startTransition] = useTransition();
 	const [error, setError] = useState<string | null>(null);
-	const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+	const [fieldErrors, setFieldErrors] = useState<ApplicationErrors>({});
 
 	const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
 
+		const name = (data.get('name') as string).trim();
 		const contactMethod = data.get('contactMethod') as string;
 		const contact = (data.get('contact') as string).trim();
 
-		const errors: FieldErrors = {};
-		if (!contactMethod) errors.contactMethod = 'Select a contact method';
-		if (!contact) errors.contact = 'Contact is required';
-		else if (contact.length < 2) errors.contact = 'Contact is too short';
-
+		const errors = validateApplication({ name, contactMethod, contact });
 		if (Object.keys(errors).length > 0) {
 			setFieldErrors(errors);
 			return;
@@ -50,11 +39,7 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 
 		startTransition(async () => {
 			try {
-				await submitApplication({
-					name: data.get('name') as string,
-					contactMethod,
-					contact,
-				});
+				await submitApplication({ name, contactMethod, contact });
 				onSuccess?.();
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
@@ -83,7 +68,7 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 							<div className={styles.fieldWrap}>
 								<Select
 									name="contactMethod"
-									options={CONTACT_METHODS}
+									options={CONTACT_OPTIONS}
 									placeholder="Contact Method"
 									required
 									disabled={isPending}
