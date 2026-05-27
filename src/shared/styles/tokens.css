@@ -30,9 +30,7 @@
 	--color-text-muted: rgb(255 255 255 / 70%);
 
 	--gradient-bg-primary: linear-gradient(135deg, #dc8400 0%, #560080 55.77%, #220032 100%);
-	--gradient-bg-secondary:
-		linear-gradient(135deg, #9500dc 0%, #560080 55.77%, #220032 100%),
-		linear-gradient(135deg, #14091a 0%, #14091a 55.77%, #220032 100%);
+	--gradient-bg-secondary: linear-gradient(135deg, #14091a 0%, #14091a 55.77%, #220032 100%);
 	--gradient-card-primary: linear-gradient(94deg, #9500dc 0%, #560080 55.77%, #220032 100%);
 	--gradient-card-secondary: linear-gradient(137deg, #a30ee9 0%, #8a00cc 100%);
 	--gradient-bg-mobile: linear-gradient(142deg, #9500dc 0%, #560080 56.41%, #220032 100%);
