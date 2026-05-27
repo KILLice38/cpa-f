@@ -5,13 +5,13 @@ export interface Tile {
 	text: string;
 }
 
-export interface Task {
+export interface Tasks {
 	description: string;
 	tiles: Tile[];
 }
 
-export const getTasks = async (): Promise<Task[]> => {
-	return apiClient.get<Task[]>('/tasks', {
+export const getTasks = async (): Promise<Tasks> => {
+	return apiClient.get<Tasks>('/tasks', {
 		next: {
 			revalidate: 60,
 		},
