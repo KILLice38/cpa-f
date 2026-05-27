@@ -4,7 +4,7 @@ import { getLocale } from 'next-intl/server';
 import { API_CONFIG } from './config';
 import type { RequestMethod, RequestOptions } from './types';
 
-class ApiError extends Error {
+export class ApiError extends Error {
 	status: number;
 
 	constructor(message: string, status: number) {

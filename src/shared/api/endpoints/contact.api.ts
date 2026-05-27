@@ -1,6 +1,6 @@
 import { apiClient } from '../client';
 
-interface Contact {
+export interface Contact {
 	name: string;
 	method: string;
 	contact: string;
