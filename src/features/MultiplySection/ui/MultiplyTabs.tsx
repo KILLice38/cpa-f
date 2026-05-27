@@ -6,10 +6,12 @@ import type { Multiply } from '@/shared/api';
 import { Arrow, Button } from '@/shared/ui';
 
 import styles from './MultiplyTabs.module.css';
+interface MultiplyTabsProps {
+	tabs: Multiply[];
+	buttonLabels: string[];
+}
 
-const BUTTON_LABELS = ['Join the team', 'Partner Up', 'Launch Now'];
-
-export function MultiplyTabs({ tabs }: { tabs: Multiply[] }) {
+export function MultiplyTabs({ tabs, buttonLabels }: MultiplyTabsProps) {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const active = tabs[activeIndex];
 
@@ -34,7 +36,7 @@ export function MultiplyTabs({ tabs }: { tabs: Multiply[] }) {
 				<Arrow size="lg" />
 				<p className={styles.step}>{active?.steps.step_2}</p>
 				<Arrow size="lg" />
-				<Button>{BUTTON_LABELS[activeIndex] ?? BUTTON_LABELS[0]}</Button>
+				<Button>{buttonLabels[activeIndex] ?? buttonLabels[0]}</Button>
 			</div>
 		</div>
 	);

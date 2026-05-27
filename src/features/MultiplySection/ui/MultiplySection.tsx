@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 import { getMultiply } from '@/shared/api';
 import { multiplyImg } from '@/shared/assets';
@@ -8,14 +9,19 @@ import styles from './MultiplySection.module.css';
 import { MultiplyTabs } from './MultiplyTabs';
 
 export async function MultiplySection() {
-	const tabs = await getMultiply().catch(() => []);
+	const [tabs, t] = await Promise.all([
+		getMultiply().catch(() => []),
+		getTranslations('MultiplySection'),
+	]);
+
+	const buttonLabels = [t('button_0'), t('button_1'), t('button_2')];
 
 	return (
 		<Section className={styles.section}>
 			<Container className={styles.container}>
 				<SectionTitle>Multiply With Us</SectionTitle>
 				<div className={styles.layout}>
-					<MultiplyTabs tabs={tabs} />
+					<MultiplyTabs tabs={tabs} buttonLabels={buttonLabels} />
 				</div>
 				<Image
 					src={multiplyImg}
@@ -32,7 +38,7 @@ export async function MultiplySection() {
 						<NavLink href={'#'}>Linkedin</NavLink>
 					</div>
 					<NavLink href={'#'} className={styles.navToTop}>
-						Scroll To Top <Arrow color="inverse" className={styles.navArrow} />
+						{t('scrollToTop')} <Arrow color="inverse" className={styles.navArrow} />
 					</NavLink>
 				</nav>
 			</Container>
