@@ -22,6 +22,8 @@ export function RunningRow({ text, className }: RunningRowProps) {
 				<div className={styles.track} aria-hidden="true">
 					{item}
 					{item}
+					{item}
+					{item}
 				</div>
 			</div>
 		</div>

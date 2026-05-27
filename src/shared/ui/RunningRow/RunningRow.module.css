@@ -1,11 +1,13 @@
 .root {
-	margin-top: 54px;
 	overflow: hidden;
 	width: 100%;
+	transform: rotate(1deg);
+	padding: 9px 0 12px;
+	border-top: 1px solid var(--secondary-color);
+	border-bottom: 1px solid var(--secondary-color);
 }
 
 .inner {
-	transform: rotate(1deg);
 	width: 102%;
 	margin-left: -1%;
 }
@@ -37,11 +39,21 @@
 		transform: translateX(0);
 	}
 	to {
-		transform: translateX(-50%);
+		transform: translateX(-25%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.track {
+		animation: none;
 	}
 }
 
 @media (max-width: 768px) {
+	.root {
+		padding: 3px 0 6px;
+	}
+
 	.item {
 		gap: var(--space-6);
 		padding-inline: var(--space-3);
