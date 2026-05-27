@@ -1,0 +1,1 @@
+export { multiplyImg } from './img';
