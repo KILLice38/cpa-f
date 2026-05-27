@@ -25,10 +25,10 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 		const data = new FormData(e.currentTarget);
 
 		const name = (data.get('name') as string).trim();
-		const contactMethod = data.get('contactMethod') as string;
+		const method = data.get('method') as string;
 		const contact = (data.get('contact') as string).trim();
 
-		const errors = validateApplication({ name, contactMethod, contact });
+		const errors = validateApplication({ name, method, contact });
 		if (Object.keys(errors).length > 0) {
 			setFieldErrors(errors);
 			return;
@@ -39,7 +39,7 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 
 		startTransition(async () => {
 			try {
-				await submitApplication({ name, contactMethod, contact });
+				await submitApplication({ name, method, contact });
 				onSuccess?.();
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
@@ -72,7 +72,7 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 						<div className={styles.column}>
 							<div className={styles.fieldWrap}>
 								<Select
-									name="contactMethod"
+									name="method"
 									options={CONTACT_OPTIONS}
 									placeholder=" "
 									required
