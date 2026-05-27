@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ApplicationForm, SuccessForm } from '@/features/application-form';
 import { Modal } from '@/shared/ui';
 
-export function HomeClient() {
+export function HomeClient({ children }: { children: React.ReactNode }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [view, setView] = useState<'form' | 'success'>('form');
 
@@ -25,6 +25,7 @@ export function HomeClient() {
 					<ApplicationForm onClose={handleClose} onSuccess={handleSuccess} />
 				)}
 			</Modal>
+			{children}
 		</>
 	);
 }
