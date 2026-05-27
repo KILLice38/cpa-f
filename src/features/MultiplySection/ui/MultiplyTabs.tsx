@@ -24,7 +24,7 @@ export function MultiplyTabs({ tabs, buttonLabels }: MultiplyTabsProps) {
 							className={clsx(styles.tab, i === activeIndex && styles.tabActive)}
 							onClick={() => setActiveIndex(i)}
 						>
-							{tab.title}
+							{tab.title.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
 							<Arrow size="lg" color="inverse" className={styles.tabArrow} />
 						</button>
 					</li>

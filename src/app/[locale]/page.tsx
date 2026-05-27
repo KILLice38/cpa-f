@@ -9,8 +9,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 	setRequestLocale(locale);
 	return (
 		<main>
-			<HomeClient />
-			<MultiplySection />
+			<HomeClient>
+				<MultiplySection />
+			</HomeClient>
 		</main>
 	);
 }
