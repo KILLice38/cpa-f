@@ -1,0 +1,35 @@
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.hero {
+	background: var(--gradient-bg-primary);
+}
+
+.tasks {
+	background: var(--gradient-bg-secondary);
+}
+
+.ellipse {
+	position: absolute;
+	z-index: 0;
+	bottom: -400px;
+	left: -512px;
+	width: 1188px;
+	height: 1187px;
+	border-radius: 100%;
+	background: var(--gradient-radial);
+	filter: blur(100px);
+}
+
+.ellipseRight {
+	top: -400px;
+	right: -234px;
+	bottom: auto;
+	left: auto;
+}
