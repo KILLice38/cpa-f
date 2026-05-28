@@ -49,6 +49,36 @@
 	}
 }
 
+@media (max-width: 1200px) {
+	.root {
+		padding: 7px 0 10px;
+	}
+
+	.item {
+		gap: var(--space-8);
+		padding-inline: var(--space-5);
+	}
+
+	.text {
+		font-size: var(--text-6xl);
+	}
+}
+
+@media (max-width: 992px) {
+	.root {
+		padding: 5px 0 8px;
+	}
+
+	.item {
+		gap: var(--space-6);
+		padding-inline: var(--space-4);
+	}
+
+	.text {
+		font-size: var(--text-4xl);
+	}
+}
+
 @media (max-width: 768px) {
 	.root {
 		padding: 3px 0 6px;
