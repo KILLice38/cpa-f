@@ -1,0 +1,15 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(12, 9, 14, 0.5);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+}
+
+.modal {
+	position: relative;
+}

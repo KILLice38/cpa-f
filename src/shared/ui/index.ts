@@ -7,4 +7,7 @@ export { Header } from './Header';
 export { Logo } from './Logo';
 export { Card } from './Card/';
 export { Button } from './Button';
+export { Modal } from './Modal';
+export { Select } from './Select';
+export type { SelectOption } from './Select';
 export { Background } from './Background';
