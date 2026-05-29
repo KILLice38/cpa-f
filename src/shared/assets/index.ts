@@ -1,0 +1,1 @@
+export { heroImg } from './img';

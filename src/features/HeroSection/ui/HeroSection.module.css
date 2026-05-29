@@ -1,0 +1,13 @@
+.section {
+	overflow: hidden;
+}
+
+.image {
+	width: 100%;
+	max-width: min(949px, 60vw);
+	height: auto;
+	object-fit: contain;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
