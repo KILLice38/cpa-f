@@ -1,1 +1,18 @@
-{}
+{
+	"Header": {
+		"team": "TEAM",
+		"benefits": "BENEFITS",
+		"joinUs": "JOIN US",
+		"logoAria": "CPA-F home",
+		"navAria": "Main navigation"
+	},
+	"SocialLinks": {
+		"instagram": "Instagram",
+		"telegram": "Telegram",
+		"linkedin": "LinkedIn"
+	},
+	"HeroSection": {
+		"text": "We provide effective solutions, tested and refined on our own products and ad budgets",
+		"btn": "GET IN TOUCH"
+	}
+}

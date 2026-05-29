@@ -1,1 +1,18 @@
-{}
+{
+	"Header": {
+		"team": "КОМАНДА",
+		"benefits": "ПРЕИМУЩЕСТВА",
+		"joinUs": "С НАМИ",
+		"logoAria": "CPA-F — главная",
+		"navAria": "Основная навигация"
+	},
+	"SocialLinks": {
+		"instagram": "Instagram",
+		"telegram": "Telegram",
+		"linkedin": "LinkedIn"
+	},
+	"HeroSection": {
+		"text": "Предлагаем эффективные решения, которые уже протестили на своих продуктах и бюджетах",
+		"btn": "ПОЛУЧИТЬ ПРОФИТ"
+	}
+}
