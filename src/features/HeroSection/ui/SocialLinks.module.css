@@ -1,0 +1,14 @@
+.container {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+	padding-bottom: var(--space-12);
+}
+
+.root {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+}
