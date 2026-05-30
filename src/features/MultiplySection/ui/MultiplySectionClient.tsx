@@ -35,16 +35,18 @@ export function MultiplySectionClient({
 					aria-hidden="true"
 					className={styles.image}
 				/>
-				<nav className={styles.nav}>
-					<div className={styles.socials}>
-						<NavLink href={'#'}>Instagram</NavLink>
-						<NavLink href={'#'}>Telegram</NavLink>
-						<NavLink href={'#'}>Linkedin</NavLink>
-					</div>
-					<NavLink href={'#'} className={styles.navToTop}>
-						{scrollToTopLabel} <Arrow color="inverse" className={styles.navArrow} />
-					</NavLink>
-				</nav>
+				<footer className={styles.footer}>
+					<nav className={styles.nav}>
+						<div className={styles.socials}>
+							<NavLink href={'#'}>Instagram</NavLink>
+							<NavLink href={'#'}>Telegram</NavLink>
+							<NavLink href={'#'}>Linkedin</NavLink>
+						</div>
+						<NavLink href={'#'} className={styles.navToTop}>
+							{scrollToTopLabel} <Arrow color="inverse" className={styles.navArrow} />
+						</NavLink>
+					</nav>
+				</footer>
 			</Container>
 		</Section>
 	);

@@ -63,6 +63,15 @@
 	}
 }
 
+.tabActive {
+	border-color: var(--color-text-secondary);
+	background-color: var(--secondary-color);
+	color: var(--color-text-secondary);
+	.tabArrow {
+		color: var(--color-text-secondary);
+	}
+}
+
 .tabArrow {
 	transform: rotate(-90deg);
 	transition: color 0.2s;

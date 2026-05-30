@@ -1,5 +1,7 @@
 .container {
 	padding-top: 60px;
+	position: relative;
+	height: 100%;
 }
 
 .layout {
@@ -13,13 +15,14 @@
 	left: 0;
 }
 
-.nav {
+.footer {
 	position: absolute;
-	bottom: 9px;
 	right: 50px;
-	margin-top: 70px;
+	bottom: 9px;
+}
+
+.nav {
 	display: flex;
-	justify-content: flex-end;
 	align-items: center;
 	gap: 92px;
 }
@@ -68,7 +71,7 @@
 	.image {
 		display: none;
 	}
-	.nav {
+	.footer {
 		display: none;
 	}
 }
