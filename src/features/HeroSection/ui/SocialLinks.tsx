@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
+import { heroImg } from '@/shared/assets';
 import type { SocialNetwork } from '@/shared/ui';
 import { Container, SocialIcon, SocialLink } from '@/shared/ui';
 
@@ -22,6 +24,13 @@ export async function SocialLinks() {
 						<SocialIcon network={network} />
 					</SocialLink>
 				))}
+				<Image
+					src={heroImg}
+					alt=""
+					className={styles.image}
+					priority
+					sizes="(max-width: 768px) 100vw, 60vw"
+				/>
 			</div>
 		</Container>
 	);

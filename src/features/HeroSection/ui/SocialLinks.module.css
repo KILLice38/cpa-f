@@ -8,7 +8,24 @@
 }
 
 .root {
+	position: relative;
 	display: flex;
 	align-items: center;
 	gap: var(--space-4);
+}
+
+.image {
+	width: 100%;
+	max-width: 949px;
+	height: auto;
+	object-fit: contain;
+	position: absolute;
+	right: -48px;
+	bottom: -32px;
+}
+
+@media (max-width: 1440px) {
+	.image {
+		max-width: min(949px, 60vw);
+	}
 }
