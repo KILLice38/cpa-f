@@ -1,4 +1,8 @@
 {
+	"MultiTasksSection": {
+		"title": "MULTI-TASKS",
+		"descriptionHighlight": "in-house"
+  },
 	"MultiplySection": {
 		"scrollToTop": "Наверх",
 		"button_0": "В команду",
