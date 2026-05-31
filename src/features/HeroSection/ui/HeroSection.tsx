@@ -2,14 +2,13 @@ import { Section } from '@/shared/ui';
 
 import { Header } from './Header';
 import { HeroContent } from './HeroContent';
-import { SocialLinks } from './SocialLinks';
+import styles from './HeroSection.module.css';
 
 export function HeroSection() {
 	return (
-		<Section>
+		<Section className={styles.section}>
 			<Header />
 			<HeroContent />
-			<SocialLinks />
 		</Section>
 	);
 }

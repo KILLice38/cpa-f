@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
-import { Button, Container } from '@/shared/ui';
+import { heroImg } from '@/shared/assets';
+import { Button, Container, SocialLinks } from '@/shared/ui';
 
 import styles from './HeroContent.module.css';
 
@@ -22,6 +24,14 @@ export async function HeroContent() {
 					{t('btn')}
 				</Button>
 			</div>
+			<Image
+				src={heroImg}
+				alt=""
+				className={styles.image}
+				priority
+				sizes="(max-width: 768px) 100vw, 60vw"
+			/>
+			<SocialLinks className={styles.socialLinks} />
 		</Container>
 	);
 }
