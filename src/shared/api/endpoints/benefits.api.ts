@@ -6,8 +6,8 @@ export interface Benefits {
 	benefits: string[];
 }
 
-export const getBenefits = async (): Promise<Benefits[]> => {
-	return apiClient.get<Benefits[]>('/benefits', {
+export const getBenefits = async (): Promise<Benefits> => {
+	return apiClient.get<Benefits>('/benefits', {
 		next: {
 			revalidate: 60,
 		},

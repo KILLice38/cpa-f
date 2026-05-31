@@ -2,5 +2,11 @@
 	"MultiTasksSection": {
 		"title": "MULTI-TASKS",
 		"descriptionHighlight": "in-house"
+  },
+	"MultiplySection": {
+		"scrollToTop": "Наверх",
+		"button_0": "В команду",
+		"button_1": "Запустить проект",
+		"button_2": "Стать партнёром"
 	}
 }

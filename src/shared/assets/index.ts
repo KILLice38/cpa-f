@@ -1,1 +1,1 @@
-export { heroImg, mainTasksDesktopImg, mainTasksMobileImg } from './img';
+export { heroImg, mainTasksDesktopImg, mainTasksMobileImg, snakeBenefitsImg, multiplyImg } from './img';
