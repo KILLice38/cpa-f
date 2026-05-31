@@ -1,5 +1,3 @@
-'use server';
-
 import { getBenefits } from '@/shared/api';
 
 import { BenefitsSectionClient } from './BenefitsSectionClient';
