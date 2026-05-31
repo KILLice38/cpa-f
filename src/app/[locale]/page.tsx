@@ -1,6 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 
-import { BenefitsSection } from '@/features';
+import { BenefitsSection } from '@/features/BenefitsSection';
 import { HeroSection } from '@/features/HeroSection';
 import { MultiplySection } from '@/features/MultiplySection';
 import { MultiTasksSection } from '@/features/MultiTasksSection';

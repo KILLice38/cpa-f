@@ -1,1 +1,1 @@
-export { MultiplySection } from './ui';
+export { MultiplySection } from './ui/MultiplySection';

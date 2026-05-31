@@ -30,15 +30,7 @@ const eslintConfig = defineConfig([
 			'import/no-internal-modules': [
 				'warn',
 				{
-					allow: [
-						'@/features/*',
-						'@/entities/*',
-						'@/shared/*',
-						'@/app/**',
-						'next/**',
-						'next-intl/**',
-						'react-dom/**',
-					],
+					forbid: ['@/features/*/**', '@/shared/*/**'],
 				},
 			],
 		},
