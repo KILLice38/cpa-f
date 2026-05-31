@@ -40,6 +40,7 @@
 	font-weight: var(--font-weight-bold);
 	line-height: 28px;
 	color: var(--secondary-color);
+	overflow-wrap: break-word;
 }
 
 .text {
@@ -51,11 +52,21 @@
 	transition: color 0.2s;
 }
 
+@media (max-width: 992px) {
+	.textBenefit {
+		font-size: var(--text-base);
+	}
+}
+
 @media (max-width: 768px) {
 	.cardBenefit {
 		padding: 16px;
 	}
 	.text {
 		color: var(--color-text-primary);
+	}
+	.textBenefit {
+		max-width: 100%;
+		font-size: var(--text-md);
 	}
 }

@@ -1,0 +1,133 @@
+.root {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 18px;
+}
+
+.tabList {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	list-style: none;
+}
+
+.panel {
+	padding: 112.5px 98.5px;
+	max-width: 757px;
+	text-align: center;
+	border-radius: var(--radius-md);
+	background-color: var(--primary-color);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	align-items: center;
+}
+
+.step {
+	font-family: var(--second-family);
+	font-weight: var(--font-weight-bold);
+	font-size: var(--text-md);
+	color: var(--color-text-primary);
+	line-height: var(--space-6);
+}
+
+.tab {
+	padding: 17px 57px;
+	display: flex;
+	gap: 40px;
+	align-items: center;
+	font-family: var(--second-family);
+	font-weight: var(--font-weight-bold);
+	font-size: var(--text-2xl);
+	line-height: var(--space-6);
+	outline: none;
+	border: 3px solid var(--secondary-color);
+	border-radius: var(--radius-xl);
+	background-color: transparent;
+	color: var(--secondary-color);
+	transition:
+		border-color 0.2s,
+		background-color 0.2s,
+		color 0.2s;
+	cursor: pointer;
+	@media (hover: hover) {
+		&:hover {
+			border-color: var(--color-text-secondary);
+			background-color: var(--secondary-color);
+			color: var(--color-text-secondary);
+			.tabArrow {
+				color: var(--color-text-secondary);
+			}
+		}
+	}
+}
+
+.tabActive {
+	border-color: var(--color-text-secondary);
+	background-color: var(--secondary-color);
+	color: var(--color-text-secondary);
+	.tabArrow {
+		color: var(--color-text-secondary);
+	}
+}
+
+.tabArrow {
+	transform: rotate(-90deg);
+	transition: color 0.2s;
+}
+
+@media (max-width: 1200px) {
+	.tab {
+		font-size: var(--text-xl);
+		padding: 15px 40px;
+		gap: 30px;
+	}
+
+	.panel {
+		padding: 80px 70px;
+	}
+}
+
+@media (max-width: 992px) {
+	.tab {
+		font-size: var(--text-lg);
+		padding: 14px 30px;
+		gap: 20px;
+	}
+
+	.panel {
+		padding: 60px 50px;
+		max-width: 100%;
+		gap: var(--space-2);
+	}
+}
+
+@media (max-width: 768px) {
+	.root {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.panel {
+		padding: 71px 15.5px;
+	}
+
+	.tabList {
+		padding: 0 24px;
+		align-items: center;
+		gap: var(--space-3);
+	}
+
+	.tab {
+		padding: 18px 36px;
+		gap: 12px;
+		font-size: var(--text-md);
+		line-height: var(--space-6);
+	}
+
+	.step {
+		font-size: var(--text-sm);
+		line-height: var(--space-5);
+	}
+}
