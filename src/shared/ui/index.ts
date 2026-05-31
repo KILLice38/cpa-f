@@ -12,3 +12,4 @@ export { Select } from './Select';
 export type { SelectOption } from './Select';
 export { Background } from './Background';
 export { RunningRow } from './RunningRow';
+export { Arrow } from './Arrow';
