@@ -21,7 +21,7 @@ export function MultiplySectionClient({
 	scrollToTopLabel,
 }: MultiplySectionClientProps) {
 	return (
-		<Section className={styles.section}>
+		<Section id="join-us" className={styles.section}>
 			<Container className={styles.container}>
 				<SectionTitle>Multiply With Us</SectionTitle>
 				<div className={styles.layout}>

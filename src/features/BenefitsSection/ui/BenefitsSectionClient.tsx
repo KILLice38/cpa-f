@@ -9,7 +9,7 @@ import styles from './BenefitsSection.module.css';
 
 export function BenefitsSectionClient({ data }: { data: Benefits | null }) {
 	return (
-		<Section>
+		<Section id="benefits">
 			<Container className={styles.container}>
 				<SectionTitle>Multi-Benefits</SectionTitle>
 				<div className={styles.content}>

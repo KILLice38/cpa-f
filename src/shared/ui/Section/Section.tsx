@@ -5,9 +5,14 @@ import styles from './Section.module.css';
 
 export type SectionProps = {
 	className?: string;
+	id?: string;
 	children: ReactNode;
 };
 
-export function Section({ className, children }: SectionProps) {
-	return <section className={clsx(styles.section, className)}>{children}</section>;
+export function Section({ className, id, children }: SectionProps) {
+	return (
+		<section id={id} className={clsx(styles.section, className)}>
+			{children}
+		</section>
+	);
 }

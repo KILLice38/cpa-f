@@ -13,7 +13,7 @@ export async function MultiTasksSection() {
 	]);
 
 	return (
-		<Section className={styles.section}>
+		<Section id="team" className={styles.section}>
 			<Container className={styles.container}>
 				<SectionTitle className={styles.title}>{t('title')}</SectionTitle>
 				<TasksGrid description={description} tiles={tiles} />
