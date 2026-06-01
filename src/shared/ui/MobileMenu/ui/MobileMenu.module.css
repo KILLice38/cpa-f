@@ -1,3 +1,15 @@
+@property --spot-x {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 100%;
+}
+
+@property --spot-y {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 20%;
+}
+
 .overlay {
 	position: fixed;
 	inset: 0;
@@ -5,9 +17,66 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: var(--space-7) var(--space-12) var(--space-12);
-	background: var(--gradient-bg-mobile);
+	padding: 10px var(--space-4) var(--space-25);
+	background: var(--color-bg-mobile);
 	overflow: hidden;
+}
+
+.grid {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background-image: url('../../../assets/bg/bg-sized.svg');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+
+	--background-spotlight-rx: 55%;
+	--background-spotlight-ry: 65%;
+	--background-spotlight-mask-core: 28%;
+	--background-spotlight-mask-feather: 92%;
+
+	--spot-x: 70%;
+	--spot-y: 0%;
+
+	mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+	-webkit-mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+}
+
+.ellipse {
+	position: absolute;
+	z-index: 0;
+	top: -161px;
+	left: -259px;
+	width: 477;
+	height: 518px;
+	border-radius: 100%;
+	background: var(--gradient-radial);
+	filter: blur(100px);
+}
+
+.ellipseRight {
+	right: -259px;
+	bottom: -77px;
+	top: auto;
+	left: auto;
 }
 
 .pattern {
@@ -71,14 +140,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--space-6);
+	gap: var(--space-10);
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
 .navLink {
-	padding: var(--space-2);
+	padding: 10px;
 	font-size: var(--text-xl);
 }
 
@@ -88,25 +157,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--space-4);
-	margin-bottom: var(--space-8);
+	gap: var(--space-7);
+	margin-bottom: var(--space-15);
 }
 
 .langSwitcher {
 	position: relative;
 	z-index: 1;
-}
-
-@media (max-width: 480px) {
-	.overlay {
-		padding: var(--space-6) var(--space-5) var(--space-8);
-	}
-
-	.navList {
-		gap: var(--space-5);
-	}
-
-	.navLink {
-		font-size: var(--text-lg);
-	}
 }

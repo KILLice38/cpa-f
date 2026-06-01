@@ -1,4 +1,5 @@
 'use client';
+import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
 
@@ -70,6 +71,9 @@ export function MobileMenu() {
 			aria-modal="true"
 			aria-label={t('navAria')}
 		>
+			<div className={styles.grid} />
+			<div className={styles.ellipse} />
+			<div className={clsx(styles.ellipse, styles.ellipseRight)} />
 			<div className={styles.topBar}>
 				<Link href="/" className={styles.logoLink} aria-label={t('logoAria')} onClick={close}>
 					<Logo variant="inverse" size="headerOpen" />
