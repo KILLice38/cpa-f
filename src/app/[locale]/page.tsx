@@ -1,20 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
-import type { ReactNode } from 'react';
 
 import { BenefitsSection } from '@/features/BenefitsSection';
-import { FullPage, FullPageSlide } from '@/features/fullpage';
+import { FullPage, type Slide } from '@/features/Fullpage';
 import { HeroSection } from '@/features/HeroSection';
 import { MultiplySection } from '@/features/MultiplySection';
 import { MultiTasksSection } from '@/features/MultiTasksSection';
-import { type BackgroundType } from '@/shared/ui';
 
 import { HomeClient } from './HomeClient';
-
-type Slide = {
-	id: string;
-	content: ReactNode;
-	bgVariant?: BackgroundType;
-};
 
 const SLIDES: Slide[] = [
 	{ id: 'hero', content: <HeroSection /> },
@@ -30,13 +22,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 	return (
 		<main>
 			<HomeClient>
-				<FullPage>
-					{SLIDES.map(({ id, content, bgVariant }) => (
-						<FullPageSlide key={id} id={id} bgVariant={bgVariant}>
-							{content}
-						</FullPageSlide>
-					))}
-				</FullPage>
+				<FullPage slides={SLIDES} />
 			</HomeClient>
 		</main>
 	);
