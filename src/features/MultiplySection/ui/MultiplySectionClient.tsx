@@ -42,7 +42,7 @@ export function MultiplySectionClient({
 							<NavLink href={'#'}>Telegram</NavLink>
 							<NavLink href={'#'}>Linkedin</NavLink>
 						</div>
-						<NavLink href={'#'} className={styles.navToTop}>
+						<NavLink to="hero" className={styles.navToTop}>
 							{scrollToTopLabel} <Arrow color="inverse" className={styles.navArrow} />
 						</NavLink>
 					</nav>

@@ -6,9 +6,9 @@ import { Container, LangSwitcher, Logo, NavLink } from '@/shared/ui';
 import styles from './Header.module.css';
 
 const NAV_ITEMS = [
-	{ key: 'team', href: '#team' },
-	{ key: 'benefits', href: '#benefits' },
-	{ key: 'joinUs', href: '#join-us' },
+	{ key: 'team', to: 'team' },
+	{ key: 'benefits', to: 'benefits' },
+	{ key: 'joinUs', to: 'join-us' },
 ] as const;
 
 export async function Header() {
@@ -23,9 +23,9 @@ export async function Header() {
 
 				<nav className={styles.nav} aria-label={t('navAria')}>
 					<ul className={styles.navList}>
-						{NAV_ITEMS.map(({ key, href }) => (
+						{NAV_ITEMS.map(({ key, to }) => (
 							<li key={key}>
-								<NavLink href={href}>{t(key)}</NavLink>
+								<NavLink to={to}>{t(key)}</NavLink>
 							</li>
 						))}
 					</ul>

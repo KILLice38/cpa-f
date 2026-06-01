@@ -10,9 +10,9 @@ import { HomeClient } from './HomeClient';
 
 const SLIDES: Slide[] = [
 	{ id: 'hero', content: <HeroSection /> },
-	{ id: 'tasks', content: <MultiTasksSection />, bgVariant: 'secondary' },
+	{ id: 'team', content: <MultiTasksSection />, bgVariant: 'secondary' },
 	{ id: 'benefits', content: <BenefitsSection /> },
-	{ id: 'multiply', content: <MultiplySection /> },
+	{ id: 'join-us', content: <MultiplySection /> },
 ];
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

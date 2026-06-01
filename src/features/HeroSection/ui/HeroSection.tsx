@@ -6,7 +6,7 @@ import styles from './HeroSection.module.css';
 
 export function HeroSection() {
 	return (
-		<Section className={styles.section}>
+		<Section id="hero" className={styles.section}>
 			<Header />
 			<HeroContent />
 		</Section>
