@@ -1,10 +1,14 @@
 {
 	"Header": {
+		"main": "ГЛАВНАЯ",
 		"team": "КОМАНДА",
 		"benefits": "ПРЕИМУЩЕСТВА",
 		"joinUs": "С НАМИ",
 		"logoAria": "CPA-F — главная",
-		"navAria": "Основная навигация"
+		"navAria": "Основная навигация",
+		"openMenuAria": "Открыть меню",
+		"closeAria": "Закрыть меню",
+		"menu": "Меню"
 	},
 	"SocialLinks": {
 		"instagram": "Instagram",
@@ -14,11 +18,11 @@
 	"HeroSection": {
 		"text": "Предлагаем эффективные решения, которые уже протестили на своих продуктах и бюджетах",
 		"btn": "ПОЛУЧИТЬ ПРОФИТ"
-  },
+	},
 	"MultiTasksSection": {
 		"title": "MULTI-TASKS",
 		"descriptionHighlight": "in-house"
-  },
+	},
 	"MultiplySection": {
 		"scrollToTop": "Наверх",
 		"button_0": "В команду",

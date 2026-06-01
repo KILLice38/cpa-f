@@ -1,5 +1,7 @@
+'use client';
+
 import clsx from 'clsx';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 import { SocialIcon, SocialLink } from '../SocialLink';
 import styles from './SocialLinks.module.css';
@@ -15,8 +17,8 @@ type SocialLinksProps = {
 	className?: string;
 };
 
-export async function SocialLinks({ className }: SocialLinksProps) {
-	const t = await getTranslations('SocialLinks');
+export function SocialLinks({ className }: SocialLinksProps) {
+	const t = useTranslations('SocialLinks');
 
 	return (
 		<div className={clsx(styles.container, className)}>

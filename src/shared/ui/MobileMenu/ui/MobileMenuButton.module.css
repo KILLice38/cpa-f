@@ -1,0 +1,22 @@
+.button {
+	display: none;
+	padding: 10px;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--text-md);
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	text-decoration-skip-ink: none;
+	color: var(--secondary-color);
+	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.button {
+		display: inline-flex;
+	}
+}
