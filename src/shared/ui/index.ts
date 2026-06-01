@@ -15,3 +15,4 @@ export { SocialLinks } from './SocialLinks';
 export { RunningRow } from './RunningRow';
 export { Arrow } from './Arrow';
 export { MobileMenuRoot, MobileMenuButton } from './MobileMenu';
+export { MobileHeader } from './MobileHeader';
