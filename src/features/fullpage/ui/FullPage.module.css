@@ -1,0 +1,33 @@
+.root {
+	position: relative;
+}
+
+.slide {
+	position: relative;
+	z-index: 1;
+}
+
+@media (min-width: 768px) {
+	.root {
+		position: fixed;
+		inset: 0;
+		height: 100dvh;
+		overflow: hidden;
+	}
+
+	.slide {
+		position: absolute;
+		inset: 0;
+		height: 100dvh;
+		opacity: 0;
+		will-change: transform;
+	}
+
+	.firstSlide {
+		opacity: 1;
+	}
+
+	.ready .slide {
+		opacity: 1;
+	}
+}
