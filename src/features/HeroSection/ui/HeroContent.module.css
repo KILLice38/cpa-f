@@ -64,3 +64,9 @@
 	object-position: bottom right;
 	pointer-events: none;
 }
+
+@media (max-width: 768px) {
+	.socialLinks {
+		display: none;
+	}
+}

@@ -26,3 +26,9 @@
 	color: var(--secondary-color);
 	user-select: none;
 }
+
+@media (max-width: 768px) {
+	.root {
+		font-size: var(--text-2xl);
+	}
+}
