@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { type RefObject, useEffect } from 'react';
 
-import type { Direction, SlideAnimations } from '../model/types';
+import type { Direction, FullPageApi, SlideAnimations } from '../model/types';
 
 gsap.registerPlugin(Observer);
 
@@ -10,13 +10,25 @@ const DURATION = 1;
 const DESKTOP = '(min-width: 768px)';
 const REDUCED = '(prefers-reduced-motion: reduce)';
 
-export function useFullPage(
-	slidesRef: RefObject<HTMLElement[]>,
-	animationRef: RefObject<SlideAnimations[]>,
-	count: number,
-	onChange: (index: number) => void,
-	onReady: (ready: boolean) => void,
-) {
+type UseFullPageParams = {
+	slidesRef: RefObject<HTMLElement[]>;
+	animationsRef: RefObject<SlideAnimations[]>;
+	apiRef: RefObject<FullPageApi | null>;
+	count: number;
+	getInitialIndex: () => number;
+	onChange: (index: number) => void;
+	onReady: (ready: boolean) => void;
+};
+
+export function useFullPage({
+	slidesRef,
+	animationsRef,
+	apiRef,
+	count,
+	getInitialIndex,
+	onChange,
+	onReady,
+}: UseFullPageParams) {
 	useEffect(() => {
 		const slides = slidesRef.current;
 		if (slides.length === 0) return;
@@ -29,18 +41,21 @@ export function useFullPage(
 
 			const duration = reduced ? 0 : DURATION;
 
-			gsap.set(slides, { yPercent: (i) => (i === 0 ? 0 : 100) });
+			const start = Math.min(Math.max(getInitialIndex(), 0), count - 1);
+			gsap.set(slides, { yPercent: (i) => (i < start ? -100 : i > start ? 100 : 0) });
 			onReady(true);
+			onChange(start);
 
-			let current = 0;
+			let current = start;
 			let animating = false;
+
 			const goTo = (index: number, direction: Direction) => {
 				if (index < 0 || index >= count || index === current || animating) return;
 				animating = true;
 
 				const leaving = slides[current];
 				const entering = slides[index];
-				const transition = animationRef.current;
+				const transition = animationsRef.current;
 
 				gsap.set(entering, { yPercent: direction === 1 ? 100 : -100 });
 
@@ -62,6 +77,10 @@ export function useFullPage(
 				else tl.to(entering, { yPercent: 0 }, 0);
 			};
 
+			apiRef.current = {
+				goTo: (index) => goTo(index, index > current ? 1 : -1),
+			};
+
 			const observer = Observer.create({
 				target: window,
 				type: 'wheel,touch,pointer',
@@ -72,9 +91,12 @@ export function useFullPage(
 				onDown: () => goTo(current - 1, -1),
 			});
 
-			return () => observer.kill();
+			return () => {
+				observer.kill();
+				apiRef.current = null;
+			};
 		});
 
 		return () => mm.revert();
-	}, [slidesRef, animationRef, count, onChange, onReady]);
+	}, [slidesRef, animationsRef, apiRef, count, getInitialIndex, onChange, onReady]);
 }

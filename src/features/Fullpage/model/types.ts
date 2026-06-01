@@ -10,3 +10,7 @@ export type SlideAnimations = {
 	enter?: SlideTransition;
 	leave?: SlideTransition;
 };
+
+export type FullPageApi = {
+	goTo: (index: number) => void;
+};
