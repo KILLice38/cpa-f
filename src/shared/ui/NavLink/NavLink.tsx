@@ -1,15 +1,31 @@
 import clsx from 'clsx';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 import { Link } from '@/shared/i18n';
+import { SectionLink } from '@/shared/section-nav';
 
 import styles from './NavLink.module.css';
 
-type NavLinkProps = ComponentProps<typeof Link>;
+type NavLinkProps = {
+	to?: string;
+	href?: ComponentProps<typeof Link>['href'];
+	className?: string;
+	children: ReactNode;
+};
 
-export function NavLink({ className, children, ...props }: NavLinkProps) {
+export function NavLink({ to, href, className, children }: NavLinkProps) {
+	const cls = clsx(styles.link, className);
+
+	if (to) {
+		return (
+			<SectionLink to={to} className={cls}>
+				{children}
+			</SectionLink>
+		);
+	}
+
 	return (
-		<Link className={clsx(styles.link, className)} {...props}>
+		<Link href={href ?? '#'} className={cls}>
 			{children}
 		</Link>
 	);

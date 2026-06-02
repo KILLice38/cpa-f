@@ -30,8 +30,24 @@
 	--color-text-secondary: #0c090e;
 	--color-text-muted: rgb(255 255 255 / 70%);
 
-	--gradient-bg-primary: linear-gradient(135deg, #dc8400 0%, #560080 55.77%, #220032 100%);
-	--gradient-bg-secondary: linear-gradient(135deg, #14091a 0%, #14091a 55.77%, #220032 100%);
+	--bg-primary-start: #dc8400;
+	--bg-primary-mid: #560080;
+	--bg-secondary-start: #14091a;
+	--bg-secondary-mid: #14091a;
+	--bg-end: #220032;
+
+	--gradient-bg-primary: linear-gradient(
+		135deg,
+		var(--bg-primary-start) 0%,
+		var(--bg-primary-mid) 55.77%,
+		var(--bg-end) 100%
+	);
+	--gradient-bg-secondary: linear-gradient(
+		135deg,
+		var(--bg-secondary-start) 0%,
+		var(--bg-secondary-mid) 55.77%,
+		var(--bg-end) 100%
+	);
 	--gradient-card-primary: linear-gradient(274deg, #9500dc 0%, #560080 55.77%, #220032 100%);
 	--gradient-card-secondary: linear-gradient(137deg, #a30ee9 0%, #8a00cc 100%);
 	--gradient-bg-mobile: linear-gradient(142deg, #9500dc 0%, #560080 56.41%, #220032 100%);
