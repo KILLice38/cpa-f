@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
-import { SectionNavContext } from '@/shared/section-nav';
+import { SectionNavContext } from '@/shared/sectionNav';
 import { Background, type BackgroundType } from '@/shared/ui';
 
 import styles from './FullPage.module.css';

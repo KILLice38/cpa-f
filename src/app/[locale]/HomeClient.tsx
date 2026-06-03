@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { ApplicationForm, SuccessForm } from '@/features/application-form';
+import { ApplicationForm, SuccessForm } from '@/features/applicationForm';
 import { Modal } from '@/shared/ui';
 
 export function HomeClient({ children }: { children: React.ReactNode }) {
