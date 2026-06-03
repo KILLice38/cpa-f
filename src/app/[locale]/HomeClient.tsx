@@ -18,7 +18,11 @@ export function HomeClient({ children }: { children: React.ReactNode }) {
 
 	return (
 		<>
-			<Modal isOpen={isOpen} onClose={handleClose}>
+			<Modal
+				isOpen={isOpen}
+				onClose={handleClose}
+				aria-label={view === 'success' ? 'Application received' : 'Submit application'}
+			>
 				{view === 'success' ? (
 					<SuccessForm onClose={handleClose} />
 				) : (

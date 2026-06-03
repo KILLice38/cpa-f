@@ -22,23 +22,28 @@ export function LangSwitcher({ className }: LangSwitcherProps) {
 	const currentLocale = useLocale();
 
 	return (
-		<span className={clsx(styles.root, className)}>
+		<nav aria-label="Language selection" className={clsx(styles.root, className)}>
 			{routing.locales.map((locale, index) => {
 				const isActive = locale === currentLocale;
 
 				return (
 					<Fragment key={locale}>
-						{index > 0 ? <span className={styles.separator}>/</span> : null}
+						{index > 0 ? (
+							<span className={styles.separator} aria-hidden="true">
+								/
+							</span>
+						) : null}
 						<Link
 							href={pathname}
 							locale={locale}
 							className={clsx(styles.part, isActive && styles.partActive)}
+							aria-current={isActive ? 'true' : undefined}
 						>
 							{localeLabels[locale]}
 						</Link>
 					</Fragment>
 				);
 			})}
-		</span>
+		</nav>
 	);
 }

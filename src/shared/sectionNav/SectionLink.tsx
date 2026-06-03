@@ -24,7 +24,7 @@ export function SectionLink({ to, className, children }: SectionLinkProps) {
 		<a
 			href={`#${to}`}
 			onClick={handleClick}
-			aria-current={activeId === to || undefined}
+			aria-current={activeId === to ? 'page' : undefined}
 			className={className}
 		>
 			{children}

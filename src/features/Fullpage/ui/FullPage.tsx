@@ -81,6 +81,7 @@ export function FullPage({ slides }: { slides: Slide[] }) {
 							if (el) slidesRef.current[i] = el;
 						}}
 						className={styles.slide}
+						inert={i !== activeIndex || undefined}
 					>
 						{slide.content}
 					</div>

@@ -123,10 +123,14 @@
 	cursor: pointer;
 }
 
-.option:hover,
+.option:hover {
+	background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
 .option:focus-visible {
 	background: color-mix(in srgb, var(--primary-color) 8%, transparent);
-	outline: none;
+	outline: 2px solid var(--primary-color);
+	outline-offset: -2px;
 }
 
 .optionSelected {

@@ -91,8 +91,24 @@ export function useFullPage({
 				onDown: () => goTo(current - 1, -1),
 			});
 
+			const handleKeyDown = (e: KeyboardEvent) => {
+				if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+
+				const active = document.activeElement;
+				if (active?.closest('[role="dialog"], [role="tablist"], [role="listbox"], [aria-haspopup]'))
+					return;
+				if (active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement) return;
+
+				e.preventDefault();
+				if (e.key === 'ArrowDown') goTo(current + 1, 1);
+				else goTo(current - 1, -1);
+			};
+
+			window.addEventListener('keydown', handleKeyDown);
+
 			return () => {
 				observer.kill();
+				window.removeEventListener('keydown', handleKeyDown);
 				apiRef.current = null;
 			};
 		});
