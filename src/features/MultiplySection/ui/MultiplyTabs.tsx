@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useRef, useState } from 'react';
 
 import type { Multiply } from '@/shared/api';
-import { Arrow, Button } from '@/shared/ui';
+import { Arrow, OpenModalButton } from '@/shared/ui';
 
 import styles from './MultiplyTabs.module.css';
 
@@ -74,8 +74,8 @@ export function MultiplyTabs({ tabs, buttonLabels }: MultiplyTabsProps) {
 				<p className={styles.step}>{active?.steps.step_1}</p>
 				<Arrow size="lg" aria-hidden="true" />
 				<p className={styles.step}>{active?.steps.step_2}</p>
-				<Arrow size="lg" aria-hidden="true" />
-				<Button>{buttonLabels[activeIndex] ?? buttonLabels[0]}</Button>
+				<Arrow size="lg" />
+				<OpenModalButton>{buttonLabels[activeIndex] ?? buttonLabels[0]}</OpenModalButton>
 			</div>
 		</div>
 	);

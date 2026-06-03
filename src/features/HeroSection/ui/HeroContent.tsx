@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 import { heroImg } from '@/shared/assets';
-import { Button, Container, SocialLinks } from '@/shared/ui';
+import { Button, Container, OpenModalButton, SocialLinks } from '@/shared/ui';
 
 import styles from './HeroContent.module.css';
 
@@ -20,9 +20,7 @@ export async function HeroContent() {
 					</span>
 				</h1>
 				<p className={styles.text}>{t('text')}</p>
-				<Button className={styles.button} type="button">
-					{t('btn')}
-				</Button>
+				<OpenModalButton className={styles.button}>{t('btn')}</OpenModalButton>
 			</div>
 			<Image
 				src={heroImg}
