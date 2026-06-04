@@ -1,0 +1,155 @@
+/* TODO: replace all color-mix(in srgb, var(--primary-color) 30%, transparent) with a --color-border-subtle token (add to tokens.css with rgba(158, 19, 224, 0.3) as @supports fallback) */
+
+.container {
+	position: relative;
+	width: 100%;
+}
+
+.validationInput {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 7.5px 11px;
+	font-family: var(--font-family);
+	font-size: var(--text-sm);
+	font-weight: var(--font-weight-light);
+	color: var(--color-text-secondary);
+	background: #ffffff;
+	border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	text-align: left;
+}
+
+.triggerOpen {
+	padding-bottom: 8.5px;
+	border-bottom: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.triggerText {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.placeholder {
+	color: var(--color-text-secondary);
+}
+
+.arrow {
+	flex-shrink: 0;
+	width: 8px;
+	height: 7px;
+	margin-left: var(--space-2);
+	background-image: url("data:image/svg+xml,%3Csvg width='8' height='7' viewBox='0 0 8 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.00497 7L0 0H8L4.00497 7Z' fill='%239E13E0'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: contain;
+	will-change: transform;
+	transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+	transform: rotate(180deg);
+}
+
+.dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	background: #ffffff;
+	border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+	border-top: none;
+	border-bottom-left-radius: var(--radius-sm);
+	border-bottom-right-radius: var(--radius-sm);
+	z-index: 10;
+}
+
+.separator {
+	width: 94%;
+	height: 1px;
+	background: color-mix(in srgb, var(--primary-color) 30%, transparent);
+	margin: 0 auto;
+}
+
+.options {
+	max-height: 120px;
+	overflow-y: auto;
+	margin-right: 2px;
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in srgb, var(--primary-color) 30%, transparent) transparent;
+}
+
+@supports selector(::-webkit-scrollbar) {
+	.options::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.options::-webkit-scrollbar-thumb {
+		min-height: 37px;
+		background: color-mix(in srgb, var(--primary-color) 30%, transparent);
+		border-radius: 2px;
+	}
+
+	.options::-webkit-scrollbar-track {
+		background: transparent;
+	}
+}
+
+.option {
+	padding: 7.5px 11px;
+	font-family: var(--font-family);
+	font-size: var(--text-sm);
+	font-weight: var(--font-weight-light);
+	color: var(--color-text-secondary);
+	cursor: pointer;
+}
+
+.option:hover {
+	background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.option:focus-visible {
+	background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+	outline: 2px solid var(--primary-color);
+	outline-offset: -2px;
+}
+
+.optionSelected {
+	color: var(--primary-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.arrow {
+		will-change: auto;
+		transition: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.trigger {
+		font-size: var(--text-xs);
+	}
+
+	.option {
+		font-size: var(--text-xs);
+	}
+}

@@ -1,0 +1,47 @@
+.logo {
+	height: auto;
+}
+
+.logo :where(ellipse, path) {
+	fill: currentColor;
+}
+
+.primary {
+	color: var(--primary-color);
+}
+
+.secondary {
+	color: var(--secondary-color);
+}
+
+.inverse {
+	color: var(--color-text-primary);
+}
+
+.default {
+	width: 45px;
+}
+
+.form {
+	width: 57px;
+}
+
+.header {
+	width: 45px;
+}
+
+.row {
+	width: 60px;
+}
+
+@media (max-width: 768px) {
+	.header {
+		width: 26.24px;
+	}
+	.headerOpen {
+		width: 43.81px;
+	}
+	.row {
+		width: 30px;
+	}
+}

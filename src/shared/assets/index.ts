@@ -1,0 +1,1 @@
+export { heroImg, mainTasksDesktopImg, mainTasksMobileImg, snakeBenefitsImg, multiplyImg } from './img';

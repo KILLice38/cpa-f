@@ -1,0 +1,72 @@
+.card {
+	border-radius: var(--radius-sm);
+}
+
+.cardBenefit {
+	padding: 20px;
+	background-color: var(--primary-color);
+	transition: background-color 0.2s;
+	&:hover {
+		background-color: var(--secondary-color);
+		.textBenefit {
+			color: var(--color-text-secondary);
+		}
+	}
+}
+
+.textBenefit {
+	max-width: 460px;
+	font-family: var(--second-family);
+	font-size: var(--text-md);
+	font-weight: var(--font-weight-bold);
+	line-height: 24px;
+	color: var(--color-text-primary);
+	transition: color 0.2s;
+}
+
+.cardTask {
+	padding: 10px 10px 20px;
+	background-color: var(--primary-color);
+	&:hover {
+		.text {
+			color: var(--color-text-primary);
+		}
+	}
+}
+
+.title {
+	font-family: var(--second-family);
+	font-size: var(--text-xl);
+	font-weight: var(--font-weight-bold);
+	line-height: 28px;
+	color: var(--secondary-color);
+	overflow-wrap: break-word;
+}
+
+.text {
+	margin-top: 10px;
+	font-size: var(--text-md);
+	font-weight: var(--font-weight-regular);
+	line-height: 24px;
+	color: var(--color-text-muted);
+	transition: color 0.2s;
+}
+
+@media (max-width: 992px) {
+	.textBenefit {
+		font-size: var(--text-base);
+	}
+}
+
+@media (max-width: 768px) {
+	.cardBenefit {
+		padding: 16px;
+	}
+	.text {
+		color: var(--color-text-primary);
+	}
+	.textBenefit {
+		max-width: 100%;
+		font-size: var(--text-md);
+	}
+}

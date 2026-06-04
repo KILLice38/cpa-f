@@ -1,0 +1,17 @@
+.link {
+	padding: 10px;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--text-md);
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	text-decoration-skip-ink: none;
+	color: var(--secondary-color);
+	transition: color 0.2s;
+	cursor: pointer;
+}
+
+.link:hover {
+	color: var(--color-text-primary);
+}
