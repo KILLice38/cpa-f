@@ -1,6 +1,6 @@
 import type { Contact } from '@/shared/api';
 
-export const CONTACT_METHODS = ['Instagram', 'Telegram', 'LinkedIn'] as const;
+export const CONTACT_METHODS = ['telegram', 'whatsapp', 'email'] as const;
 export type ContactMethod = (typeof CONTACT_METHODS)[number];
 
 export type ApplicationErrors = {

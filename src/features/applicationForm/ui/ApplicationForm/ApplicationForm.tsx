@@ -8,7 +8,16 @@ import { submitApplication } from '../../api';
 import { CONTACT_METHODS, validateApplication, type ApplicationErrors } from '../../model';
 import { FormDialog } from '../FormDialog';
 
-const CONTACT_OPTIONS: SelectOption[] = CONTACT_METHODS.map((m) => ({ value: m, label: m }));
+const METHOD_LABELS: Record<string, string> = {
+	telegram: 'Telegram',
+	whatsapp: 'WhatsApp',
+	email: 'Email',
+};
+
+const CONTACT_OPTIONS: SelectOption[] = CONTACT_METHODS.map((m) => ({
+	value: m,
+	label: METHOD_LABELS[m] ?? m,
+}));
 
 type ApplicationFormProps = {
 	onClose: () => void;
