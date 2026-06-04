@@ -1,12 +1,13 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+import { useTranslations } from 'next-intl';
 
 import styles from './MobileHeader.module.css';
 import { Link } from '../../../i18n';
 import { Logo } from '../../Logo';
 import { MobileMenuButton } from '../../MobileMenu';
 
-export async function MobileHeader() {
-	const t = await getTranslations('Header');
+export function MobileHeader() {
+	const t = useTranslations('Header');
 	return (
 		<header className={styles.header}>
 			<Link href="/" className={styles.logoLink} aria-label={t('logoAria')}>
