@@ -1,25 +1,28 @@
 import { setRequestLocale } from 'next-intl/server';
 
 import { BenefitsSection } from '@/features/BenefitsSection';
+import { FullPage, type Slide } from '@/features/Fullpage';
 import { HeroSection } from '@/features/HeroSection';
 import { MultiplySection } from '@/features/MultiplySection';
 import { MultiTasksSection } from '@/features/MultiTasksSection';
-import { Background, MobileHeader } from '@/shared/ui';
 
 import { HomeClient } from './HomeClient';
+
+const SLIDES: Slide[] = [
+	{ id: 'hero', content: <HeroSection /> },
+	{ id: 'team', content: <MultiTasksSection />, bgVariant: 'secondary' },
+	{ id: 'benefits', content: <BenefitsSection /> },
+	{ id: 'join-us', content: <MultiplySection /> },
+];
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params;
 	setRequestLocale(locale);
+
 	return (
 		<main>
-			<Background />
-			<MobileHeader />
 			<HomeClient>
-				<HeroSection />
-				<MultiTasksSection />
-				<BenefitsSection />
-				<MultiplySection />
+				<FullPage slides={SLIDES} />
 			</HomeClient>
 		</main>
 	);

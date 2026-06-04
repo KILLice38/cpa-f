@@ -2,11 +2,13 @@ import clsx from 'clsx';
 
 import styles from './Background.module.css';
 
+export type BackgroundType = 'primary' | 'secondary';
+
 type BackgroundProps = {
-	type?: 'hero' | 'tasks';
+	type?: BackgroundType;
 };
 
-export function Background({ type = 'hero' }: BackgroundProps) {
+export function Background({ type = 'primary' }: BackgroundProps) {
 	return (
 		<div className={clsx(styles.background, styles[type])}>
 			<div className={clsx(styles.ellipse)} />

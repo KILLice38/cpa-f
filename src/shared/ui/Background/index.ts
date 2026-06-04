@@ -1,1 +1,1 @@
-export { Background } from './Background';
+export { Background, type BackgroundType } from './Background';
