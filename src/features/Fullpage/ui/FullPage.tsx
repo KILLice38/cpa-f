@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import { SectionNavContext } from '@/shared/section-nav';
-import { Background, type BackgroundType } from '@/shared/ui';
+import { Background, MobileHeader, type BackgroundType } from '@/shared/ui';
 
 import styles from './FullPage.module.css';
 import { slideAnimations } from '../lib/animations';
@@ -73,7 +73,7 @@ export function FullPage({ slides }: { slides: Slide[] }) {
 		<SectionNavContext.Provider value={nav}>
 			<div className={clsx(styles.root, ready && styles.ready)}>
 				<Background type={bgVariant} />
-
+				<MobileHeader />
 				{slides.map((slide, i) => (
 					<div
 						key={slide.id}
