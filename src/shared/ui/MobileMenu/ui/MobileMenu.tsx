@@ -1,7 +1,7 @@
 'use client';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState, type AnimationEvent } from 'react';
 
 import { Link } from '@/shared/i18n';
 
@@ -18,6 +18,18 @@ export function MobileMenu() {
 	const t = useTranslations('Header');
 	const closeButtonRef = useRef<HTMLButtonElement>(null);
 	const previousFocusRef = useRef<HTMLElement | null>(null);
+	const [isClosing, setIsClosing] = useState(false);
+
+	const handleClose = useCallback(() => {
+		setIsClosing(true);
+	}, []);
+
+	const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+		if (!isClosing || event.target !== event.currentTarget) return;
+
+		setIsClosing(false);
+		close();
+	};
 
 	useEffect(() => {
 		document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -39,34 +51,35 @@ export function MobileMenu() {
 		closeButtonRef.current?.focus();
 
 		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === 'Escape') close();
+			if (event.key === 'Escape') handleClose();
 		};
 
 		window.addEventListener('keydown', onKeyDown);
 
 		return () => window.removeEventListener('keydown', onKeyDown);
-	}, [isOpen, close]);
+	}, [isOpen, handleClose]);
 
 	useEffect(() => {
 		if (!isOpen) return;
 
 		const onResize = () => {
 			if (window.matchMedia('(min-width: 769px)').matches) {
-				close();
+				handleClose();
 			}
 		};
 
 		window.addEventListener('resize', onResize);
 
 		return () => window.removeEventListener('resize', onResize);
-	}, [isOpen, close]);
+	}, [isOpen, handleClose]);
 
-	if (!isOpen) return null;
+	if (!isOpen && !isClosing) return null;
 
 	return (
 		<div
 			id={MOBILE_MENU_ID}
-			className={styles.overlay}
+			className={clsx(styles.overlay, isClosing && styles.overlayClosing)}
+			onAnimationEnd={handleAnimationEnd}
 			role="dialog"
 			aria-modal="true"
 			aria-label={t('navAria')}
@@ -75,14 +88,14 @@ export function MobileMenu() {
 			<div className={styles.ellipse} />
 			<div className={clsx(styles.ellipse, styles.ellipseRight)} />
 			<div className={styles.topBar}>
-				<Link href="/" className={styles.logoLink} aria-label={t('logoAria')} onClick={close}>
+				<Link href="/" className={styles.logoLink} aria-label={t('logoAria')} onClick={handleClose}>
 					<Logo variant="inverse" size="headerOpen" />
 				</Link>
 				<button
 					type="button"
 					ref={closeButtonRef}
 					className={styles.closeButton}
-					onClick={close}
+					onClick={handleClose}
 					aria-label={t('closeAria')}
 				>
 					<svg
@@ -106,7 +119,7 @@ export function MobileMenu() {
 				<ul className={styles.navList}>
 					{MOBILE_NAV_ITEMS.map(({ key, href }) => (
 						<li key={key}>
-							<NavLink href={href} className={styles.navLink} onClick={close}>
+							<NavLink href={href} className={styles.navLink} onClick={handleClose}>
 								{t(key)}
 							</NavLink>
 						</li>

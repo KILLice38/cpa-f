@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps, MouseEventHandler, ReactNode } from 'react';
 
 import { Link } from '@/shared/i18n';
 import { SectionLink } from '@/shared/section-nav';
@@ -10,10 +10,11 @@ type NavLinkProps = {
 	to?: string;
 	href?: ComponentProps<typeof Link>['href'];
 	className?: string;
+	onClick?: MouseEventHandler<HTMLAnchorElement>;
 	children: ReactNode;
 };
 
-export function NavLink({ to, href, className, children }: NavLinkProps) {
+export function NavLink({ to, href, className, onClick, children }: NavLinkProps) {
 	const cls = clsx(styles.link, className);
 
 	if (to) {
@@ -25,7 +26,7 @@ export function NavLink({ to, href, className, children }: NavLinkProps) {
 	}
 
 	return (
-		<Link href={href ?? '#'} className={cls}>
+		<Link href={href ?? '#'} className={cls} onClick={onClick}>
 			{children}
 		</Link>
 	);

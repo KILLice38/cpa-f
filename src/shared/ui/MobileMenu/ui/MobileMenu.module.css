@@ -10,6 +10,24 @@
 	initial-value: 20%;
 }
 
+@keyframes slideDownAndFade {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideUpAndFade {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-100%);
+	}
+}
+
 .overlay {
 	position: fixed;
 	inset: 0;
@@ -20,6 +38,11 @@
 	padding: 10px var(--space-4) var(--space-25);
 	background: var(--color-bg-mobile);
 	overflow: hidden;
+	animation: slideDownAndFade 0.4s cubic-bezier(0.32, 0.72, 0.36, 1) forwards;
+}
+
+.overlayClosing {
+	animation: slideUpAndFade 0.4s cubic-bezier(0.32, 0.72, 0.36, 1) forwards;
 }
 
 .grid {

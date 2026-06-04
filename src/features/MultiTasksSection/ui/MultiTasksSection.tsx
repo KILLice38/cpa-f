@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { getTasks } from '@/shared/api';
-import { Container, MobileMenuButton, Section, SectionTitle } from '@/shared/ui';
+import { Container, Section, SectionTitle } from '@/shared/ui';
 
 import styles from './MultiTasksSection.module.css';
 import { TasksGrid } from './TasksGrid';
