@@ -7,7 +7,8 @@ import type { Direction, FullPageApi, SlideAnimations } from '../model/types';
 gsap.registerPlugin(Observer);
 
 const DURATION = 1;
-const DESKTOP = '(min-width: 768px)';
+const TABLET = '(min-width: 768px) and (max-width: 991px)';
+const DESKTOP = '(min-width: 992px)';
 const REDUCED = '(prefers-reduced-motion: reduce)';
 
 type UseFullPageParams = {
@@ -35,9 +36,9 @@ export function useFullPage({
 
 		const mm = gsap.matchMedia();
 
-		mm.add({ isDesktop: DESKTOP, reduced: REDUCED }, (context) => {
-			const { isDesktop, reduced } = context.conditions ?? {};
-			if (!isDesktop) return;
+		mm.add({ isTablet: TABLET, isDesktop: DESKTOP, reduced: REDUCED }, (context) => {
+			const { isTablet, isDesktop, reduced } = context.conditions ?? {};
+			if (!isTablet && !isDesktop) return;
 
 			const duration = reduced ? 0 : DURATION;
 
@@ -83,7 +84,7 @@ export function useFullPage({
 
 			const observer = Observer.create({
 				target: window,
-				type: 'wheel,touch,pointer',
+				type: isTablet ? 'wheel,touch,pointer' : 'wheel,touch',
 				wheelSpeed: -1,
 				tolerance: 10,
 				preventDefault: true,
