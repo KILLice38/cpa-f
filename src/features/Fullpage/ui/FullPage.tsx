@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
-import { SectionNavContext } from '@/shared/section-nav';
+import { SectionNavContext } from '@/shared/sectionNav';
 import { Background, MobileHeader, type BackgroundType } from '@/shared/ui';
 
 import styles from './FullPage.module.css';
@@ -81,6 +81,7 @@ export function FullPage({ slides }: { slides: Slide[] }) {
 							if (el) slidesRef.current[i] = el;
 						}}
 						className={styles.slide}
+						inert={i !== activeIndex || undefined}
 					>
 						{slide.content}
 					</div>

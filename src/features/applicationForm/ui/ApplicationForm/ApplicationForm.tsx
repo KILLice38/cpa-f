@@ -8,7 +8,16 @@ import { submitApplication } from '../../api';
 import { CONTACT_METHODS, validateApplication, type ApplicationErrors } from '../../model';
 import { FormDialog } from '../FormDialog';
 
-const CONTACT_OPTIONS: SelectOption[] = CONTACT_METHODS.map((m) => ({ value: m, label: m }));
+const METHOD_LABELS: Record<string, string> = {
+	telegram: 'Telegram',
+	whatsapp: 'WhatsApp',
+	email: 'Email',
+};
+
+const CONTACT_OPTIONS: SelectOption[] = CONTACT_METHODS.map((m) => ({
+	value: m,
+	label: METHOD_LABELS[m] ?? m,
+}));
 
 type ApplicationFormProps = {
 	onClose: () => void;
@@ -56,18 +65,25 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 				<div className={styles.fields}>
 					<div className={styles.fieldWrap}>
 						<input
+							id="app-name"
 							name="name"
 							type="text"
 							placeholder=" "
-							aria-label="Your Name"
 							className={styles.input}
 							maxLength={100}
 							disabled={isPending}
+							aria-invalid={!!fieldErrors.name}
+							aria-describedby={fieldErrors.name ? 'app-name-error' : undefined}
 						/>
-						<label className={styles.label} aria-hidden="true">
+						<label className={styles.label} htmlFor="app-name">
 							Your Name
 						</label>
 					</div>
+					{fieldErrors.name && (
+						<p id="app-name-error" className={styles.error} role="alert">
+							{fieldErrors.name}
+						</p>
+					)}
 					<div className={styles.row}>
 						<div className={styles.column}>
 							<div className={styles.fieldWrap}>
@@ -77,36 +93,52 @@ export function ApplicationForm({ onClose, onSuccess }: ApplicationFormProps) {
 									placeholder=" "
 									required
 									disabled={isPending}
+									aria-label="Contact Method, required"
+									aria-describedby={fieldErrors.contactMethod ? 'app-method-error' : undefined}
 								/>
 								<label className={styles.label} aria-hidden="true">
 									Contact Method <span className={styles.span}>*</span>
 								</label>
 							</div>
 							{fieldErrors.contactMethod && (
-								<p className={styles.error}>{fieldErrors.contactMethod}</p>
+								<p id="app-method-error" className={styles.error} role="alert">
+									{fieldErrors.contactMethod}
+								</p>
 							)}
 						</div>
 						<div className={styles.column}>
 							<div className={styles.fieldWrap}>
 								<input
+									id="app-contact"
 									name="contact"
 									type="text"
 									placeholder=" "
-									aria-label="Your Contact"
 									className={styles.input}
 									minLength={2}
 									maxLength={200}
 									disabled={isPending}
+									required
+									aria-required="true"
+									aria-invalid={!!fieldErrors.contact}
+									aria-describedby={fieldErrors.contact ? 'app-contact-error' : undefined}
 								/>
-								<label className={styles.label} aria-hidden="true">
+								<label className={styles.label} htmlFor="app-contact">
 									Your Contact <span className={styles.span}>*</span>
 								</label>
 							</div>
-							{fieldErrors.contact && <p className={styles.error}>{fieldErrors.contact}</p>}
+							{fieldErrors.contact && (
+								<p id="app-contact-error" className={styles.error} role="alert">
+									{fieldErrors.contact}
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
-				{error && <p className={styles.error}>{error}</p>}
+				{error && (
+					<p className={styles.error} role="alert">
+						{error}
+					</p>
+				)}
 				<button type="submit" className={styles.submit} disabled={isPending}>
 					{isPending ? 'Sending...' : 'Submit'}
 				</button>

@@ -41,7 +41,6 @@
 	font-weight: var(--font-weight-bold);
 	font-size: var(--text-2xl);
 	line-height: var(--space-6);
-	outline: none;
 	border: 3px solid var(--secondary-color);
 	border-radius: var(--radius-xl);
 	background-color: transparent;
@@ -61,6 +60,20 @@
 			}
 		}
 	}
+}
+
+.tab:focus-visible {
+	outline: 3px solid var(--color-text-primary);
+	outline-offset: 3px;
+}
+
+.tab.tabActive:focus-visible {
+	outline-color: var(--primary-color);
+}
+
+.panel:focus-visible {
+	outline: 3px solid var(--secondary-color);
+	outline-offset: 3px;
 }
 
 .tabActive {

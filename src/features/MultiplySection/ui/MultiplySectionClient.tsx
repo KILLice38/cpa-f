@@ -36,7 +36,7 @@ export function MultiplySectionClient({
 					className={styles.image}
 				/>
 				<footer className={styles.footer}>
-					<nav className={styles.nav}>
+					<nav className={styles.nav} aria-label="Section navigation">
 						<div className={styles.socials}>
 							<NavLink href={'#'}>Instagram</NavLink>
 							<NavLink href={'#'}>Telegram</NavLink>

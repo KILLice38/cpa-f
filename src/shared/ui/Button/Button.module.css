@@ -22,6 +22,12 @@
 			color: var(--secondary-color);
 		}
 	}
+
+	&:focus-visible {
+		outline: 3px solid var(--secondary-color);
+		outline-offset: 4px;
+		border-radius: 4px;
+	}
 }
 
 .svg {

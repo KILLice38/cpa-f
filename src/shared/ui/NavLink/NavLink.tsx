@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { ComponentProps, MouseEventHandler, ReactNode } from 'react';
 
 import { Link } from '@/shared/i18n';
-import { SectionLink } from '@/shared/section-nav';
+import { SectionLink } from '@/shared/sectionNav';
 
 import styles from './NavLink.module.css';
 

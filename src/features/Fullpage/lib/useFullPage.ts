@@ -7,7 +7,8 @@ import type { Direction, FullPageApi, SlideAnimations } from '../model/types';
 gsap.registerPlugin(Observer);
 
 const DURATION = 1;
-const DESKTOP = '(min-width: 769px)';
+const TABLET = '(min-width: 769px) and (max-width: 991px)';
+const DESKTOP = '(min-width: 992px)';
 const REDUCED = '(prefers-reduced-motion: reduce)';
 
 type UseFullPageParams = {
@@ -35,9 +36,9 @@ export function useFullPage({
 
 		const mm = gsap.matchMedia();
 
-		mm.add({ isDesktop: DESKTOP, reduced: REDUCED }, (context) => {
-			const { isDesktop, reduced } = context.conditions ?? {};
-			if (!isDesktop) return;
+		mm.add({ isTablet: TABLET, isDesktop: DESKTOP, reduced: REDUCED }, (context) => {
+			const { isTablet, isDesktop, reduced } = context.conditions ?? {};
+			if (!isTablet && !isDesktop) return;
 
 			const duration = reduced ? 0 : DURATION;
 
@@ -83,7 +84,7 @@ export function useFullPage({
 
 			const observer = Observer.create({
 				target: window,
-				type: 'wheel,touch,pointer',
+				type: isTablet ? 'wheel,touch,pointer' : 'wheel,touch',
 				wheelSpeed: -1,
 				tolerance: 10,
 				preventDefault: true,
@@ -91,8 +92,24 @@ export function useFullPage({
 				onDown: () => goTo(current - 1, -1),
 			});
 
+			const handleKeyDown = (e: KeyboardEvent) => {
+				if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+
+				const active = document.activeElement;
+				if (active?.closest('[role="dialog"], [role="tablist"], [role="listbox"], [aria-haspopup]'))
+					return;
+				if (active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement) return;
+
+				e.preventDefault();
+				if (e.key === 'ArrowDown') goTo(current + 1, 1);
+				else goTo(current - 1, -1);
+			};
+
+			window.addEventListener('keydown', handleKeyDown);
+
 			return () => {
 				observer.kill();
+				window.removeEventListener('keydown', handleKeyDown);
 				apiRef.current = null;
 			};
 		});

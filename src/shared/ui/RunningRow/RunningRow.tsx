@@ -18,8 +18,9 @@ export function RunningRow({ text, className }: RunningRowProps) {
 
 	return (
 		<div className={clsx(styles.root, className)}>
-			<div className={styles.inner}>
-				<div className={styles.track} aria-hidden="true">
+			<span className="sr-only">{text}</span>
+			<div className={styles.inner} aria-hidden="true">
+				<div className={styles.track}>
 					{item}
 					{item}
 					{item}
