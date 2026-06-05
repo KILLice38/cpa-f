@@ -7,7 +7,7 @@ import type { Direction, FullPageApi, SlideAnimations } from '../model/types';
 gsap.registerPlugin(Observer);
 
 const DURATION = 1;
-const TABLET = '(min-width: 768px) and (max-width: 991px)';
+const TABLET = '(min-width: 769px) and (max-width: 991px)';
 const DESKTOP = '(min-width: 992px)';
 const REDUCED = '(prefers-reduced-motion: reduce)';
 

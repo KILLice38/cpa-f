@@ -24,10 +24,3 @@
 	height: 40px;
 	flex-shrink: 0;
 }
-
-@media (max-width: 768px) {
-	.icon {
-		width: 32px;
-		height: 32px;
-	}
-}

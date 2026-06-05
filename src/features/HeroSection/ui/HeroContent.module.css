@@ -63,4 +63,15 @@
 	object-fit: contain;
 	object-position: bottom right;
 	pointer-events: none;
+	z-index: -1;
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding-inline: var(--space-4);
+	}
+
+	.socialLinks {
+		display: none;
+	}
 }

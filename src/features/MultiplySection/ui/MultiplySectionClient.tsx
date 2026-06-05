@@ -23,7 +23,7 @@ export function MultiplySectionClient({
 	return (
 		<Section id="join-us" className={styles.section}>
 			<Container className={styles.container}>
-				<SectionTitle>Multiply With Us</SectionTitle>
+				<SectionTitle className={styles.title}>Multiply With Us</SectionTitle>
 				<div className={styles.layout}>
 					<MultiplyTabs tabs={tabs} buttonLabels={buttonLabels} />
 				</div>

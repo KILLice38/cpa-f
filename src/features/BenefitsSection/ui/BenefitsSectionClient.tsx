@@ -11,7 +11,7 @@ export function BenefitsSectionClient({ data }: { data: Benefits | null }) {
 	return (
 		<Section id="benefits">
 			<Container className={styles.container}>
-				<SectionTitle>Multi-Benefits</SectionTitle>
+				<SectionTitle className={styles.title}>Multi-Benefits</SectionTitle>
 				<div className={styles.content}>
 					<div className={styles.left}>
 						<h3 className={styles.heading}>{data?.title}</h3>

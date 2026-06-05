@@ -1,10 +1,14 @@
 {
 	"Header": {
+		"main": "MAIN",
 		"team": "TEAM",
 		"benefits": "BENEFITS",
 		"joinUs": "JOIN US",
 		"logoAria": "CPA-F home",
-		"navAria": "Main navigation"
+		"navAria": "Main navigation",
+		"openMenuAria": "Open menu",
+		"closeAria": "Close menu",
+		"menu": "Menu"
 	},
 	"SocialLinks": {
 		"instagram": "Instagram",
@@ -14,11 +18,11 @@
 	"HeroSection": {
 		"text": "We provide effective solutions, tested and refined on our own products and ad budgets",
 		"btn": "GET IN TOUCH"
-  },
+	},
 	"MultiTasksSection": {
 		"title": "MULTI-TASKS",
 		"descriptionHighlight": "in-house team"
-  },
+	},
 	"MultiplySection": {
 		"scrollToTop": "Scroll To Top",
 		"button_0": "Join The Team",

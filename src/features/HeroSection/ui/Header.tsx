@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@/shared/i18n';
-import { Container, LangSwitcher, Logo, NavLink } from '@/shared/ui';
+import { Container, LangSwitcher, Logo, MobileMenuButton, NavLink } from '@/shared/ui';
 
 import styles from './Header.module.css';
 
@@ -31,6 +31,8 @@ export async function Header() {
 					</ul>
 					<LangSwitcher />
 				</nav>
+
+				<MobileMenuButton />
 			</Container>
 		</header>
 	);

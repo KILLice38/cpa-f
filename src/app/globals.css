@@ -42,7 +42,7 @@ a {
 	outline-offset: 2px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	body {
 		overflow: hidden;
 	}
