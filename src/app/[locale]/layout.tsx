@@ -6,7 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 
 import { fontHalvarBreit, fontStolzl } from '@/shared/fonts';
 import { routing } from '@/shared/i18n';
-import { MobileMenuRoot } from '@/shared/ui';
+import { MobileMenuRoot, PreloaderRoot } from '@/shared/ui';
 
 export const metadata: Metadata = {
 	title: 'CPA-F',
@@ -35,7 +35,9 @@ export default async function RootLayout({
 		<html lang={locale} className={`${fontHalvarBreit.variable} ${fontStolzl.variable}`}>
 			<body>
 				<NextIntlClientProvider>
-					<MobileMenuRoot>{children}</MobileMenuRoot>
+					<MobileMenuRoot>
+						<PreloaderRoot>{children}</PreloaderRoot>
+					</MobileMenuRoot>
 				</NextIntlClientProvider>
 			</body>
 		</html>
