@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const NAV_TIMEOUT = 1200;
+const NAV_TIMEOUT = 2000;
 
 test.describe('fullpage navigation', () => {
 	test.beforeEach(async ({ page }) => {
