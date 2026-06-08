@@ -11,7 +11,7 @@ type PreloaderRootProps = {
 export function PreloaderRoot({ children }: PreloaderRootProps) {
 	const [progress, setProgress] = useState(0);
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [fistAnimationEnd, setFirstAnimationEnd] = useState(false);
+	const [firstAnimationEnd, setFirstAnimationEnd] = useState(false);
 
 	const loadingContextValue = useMemo(() => ({ isLoaded }), [isLoaded]);
 
@@ -44,7 +44,7 @@ export function PreloaderRoot({ children }: PreloaderRootProps) {
 	}, []);
 
 	useEffect(() => {
-		if (!fistAnimationEnd) return;
+		if (!firstAnimationEnd) return;
 
 		let finishTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -71,7 +71,7 @@ export function PreloaderRoot({ children }: PreloaderRootProps) {
 				clearTimeout(finishTimer);
 			}
 		};
-	}, [fistAnimationEnd]);
+	}, [firstAnimationEnd]);
 
 	return (
 		<LoadingProvider value={loadingContextValue}>

@@ -36,15 +36,6 @@
 	gap: var(--space-12);
 }
 
-.topBar {
-	position: absolute;
-	top: 24px;
-	left: 24px;
-	width: 60px;
-	height: 2px;
-	background: rgba(255, 255, 255, 0.4);
-}
-
 .percent {
 	font-size: var(--text-8xl);
 	font-weight: var(--font-weight-bold);
@@ -73,24 +64,6 @@
 	background: var(--secondary-color);
 	transform: translateX(-100%);
 	transition: transform 0.22s ease;
-}
-
-@keyframes loading {
-	0% {
-		width: 0%;
-	}
-
-	30% {
-		width: 40%;
-	}
-
-	60% {
-		width: 70%;
-	}
-
-	100% {
-		width: 92%;
-	}
 }
 
 @media (max-width: 768px) {
