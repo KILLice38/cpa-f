@@ -19,12 +19,13 @@ export async function BenefitCard({ description }: BenefitCardProps) {
 				{highlightDescription(description, t('descriptionHighlight'), styles.accent)}
 			</p>
 			<div className={styles.imageSlot}>
-				<picture>
+				<picture className={styles.picture}>
 					<source media="(max-width: 425px)" srcSet={mainTasksMobileImg.src} />
 					<Image
 						src={mainTasksDesktopImg}
 						alt=""
 						fill
+						loading="eager"
 						className={styles.image}
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 					/>

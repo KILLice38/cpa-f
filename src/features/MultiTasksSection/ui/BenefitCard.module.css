@@ -28,6 +28,12 @@
 	width: 100%;
 }
 
+.picture {
+	position: absolute;
+	inset: 0;
+	display: block;
+}
+
 .image {
 	object-fit: contain;
 	object-position: bottom center;

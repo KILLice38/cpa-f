@@ -25,6 +25,7 @@ export function BenefitsSectionClient({ data }: { data: Benefits | null }) {
 						height={390}
 						alt=""
 						aria-hidden="true"
+						loading="eager"
 					/>
 					<ul className={styles.cards}>
 						{data?.benefits.map((text) => (
