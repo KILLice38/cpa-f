@@ -1,5 +1,5 @@
 'use client';
-import { type ReactNode, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { Preloader } from './Preloader';
 import { LoadingProvider } from '../model/LoadingContext';
@@ -15,7 +15,7 @@ export function PreloaderRoot({ children }: PreloaderRootProps) {
 
 	const loadingContextValue = useMemo(() => ({ isLoaded }), [isLoaded]);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const progressTimer = setInterval(() => {
 			setProgress((current) => {
 				if (current >= 96) {
