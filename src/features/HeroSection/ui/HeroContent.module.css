@@ -74,4 +74,10 @@
 	.socialLinks {
 		display: none;
 	}
+
+	.image {
+		width: 120%;
+		max-width: none;
+		right: -50px;
+	}
 }

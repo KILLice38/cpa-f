@@ -54,6 +54,7 @@
 	background-repeat: no-repeat;
 	background-position-x: left;
 	background-position-y: top;
+	background-size: cover;
 
 	--background-spotlight-rx: 55%;
 	--background-spotlight-ry: 65%;

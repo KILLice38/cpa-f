@@ -20,21 +20,25 @@
 	grid-row: span 2;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
 	.grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		grid-template-rows: none;
-		grid-auto-flow: row;
-		grid-auto-rows: auto;
+		min-height: auto;
 	}
 
-	.grid > * {
-		grid-row: auto;
-		grid-column: auto;
+	.grid > :first-child > p {
+		padding: 10px;
+		font-size: clamp(1rem, 0.625rem + 0.781vi, 1.125rem);
 	}
 
-	.grid > :first-child {
-		grid-column: 1 / -1;
+	.grid > :nth-child(n + 2) {
+		h3 {
+			font-size: clamp(1.125rem, 0rem + 2.344vi, 1.5rem);
+			line-height: normal;
+		}
+
+		p {
+			font-size: clamp(1rem, 0.625rem + 0.781vi, 1.125rem);
+		}
 	}
 }
 
