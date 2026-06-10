@@ -20,6 +20,12 @@
 	grid-row: span 2;
 }
 
+@media (min-width: 1025px) and (max-height: 830px) {
+	.grid {
+		min-height: 480px;
+	}
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
 	.grid {
 		min-height: auto;

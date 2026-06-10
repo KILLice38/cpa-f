@@ -90,6 +90,12 @@
 	transition: color 0.2s;
 }
 
+@media (min-width: 1201px) and (max-height: 830px) {
+	.panel {
+		padding: 84px;
+	}
+}
+
 @media (max-width: 1200px) {
 	.tab {
 		font-size: var(--text-xl);
@@ -98,7 +104,7 @@
 	}
 
 	.panel {
-		padding: 80px 70px;
+		padding: 70px 70px;
 	}
 }
 
