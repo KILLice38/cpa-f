@@ -39,6 +39,12 @@
 	}
 }
 
+@media (min-width: 769px) and (max-height: 830px) {
+	.imageSlot {
+		min-height: 200px;
+	}
+}
+
 @media (max-width: 768px) {
 	.text {
 		padding: var(--space-6) var(--space-5);

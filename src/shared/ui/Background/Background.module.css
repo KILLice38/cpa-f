@@ -10,6 +10,18 @@
 	initial-value: #000;
 }
 
+@property --spot-x {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 100%;
+}
+
+@property --spot-y {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 20%;
+}
+
 .background {
 	position: fixed;
 	top: 0;
@@ -38,6 +50,77 @@
 	--bg-grad-2: var(--bg-secondary-mid);
 }
 
+.grid {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background-image: url('../../assets/bg/bg-sized.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	--background-spotlight-rx: 25%;
+	--background-spotlight-ry: 25%;
+	--background-spotlight-mask-core: 28%;
+	--background-spotlight-mask-feather: 92%;
+	--background-spotlight-duration: 28s;
+
+	--spot-x: 100%;
+	--spot-y: 20%;
+
+	mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+	-webkit-mask-image: radial-gradient(
+		ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at var(--spot-x)
+			var(--spot-y),
+		#000 0,
+		#000 var(--background-spotlight-mask-core),
+		rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+		rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+		transparent var(--background-spotlight-mask-feather)
+	);
+	animation: spotlightMove var(--background-spotlight-duration) ease-in-out infinite;
+}
+
+@keyframes spotlightMove {
+	0%,
+	12% {
+		--spot-x: 100%;
+		--spot-y: 20%;
+	}
+
+	25%,
+	37% {
+		--spot-x: 10%;
+		--spot-y: 50%;
+	}
+
+	50%,
+	62% {
+		--spot-x: 100%;
+		--spot-y: 90%;
+	}
+
+	75%,
+	87% {
+		--spot-x: 10%;
+		--spot-y: 50%;
+	}
+
+	100% {
+		--spot-x: 100%;
+		--spot-y: 20%;
+	}
+}
+
 .ellipse {
 	position: absolute;
 	z-index: 0;
@@ -60,5 +143,69 @@
 @media (prefers-reduced-motion: reduce) {
 	.background {
 		transition: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.grid {
+		background-position-x: left;
+		background-position-y: top;
+		animation: none;
+		--background-spotlight-rx: 55%;
+		--background-spotlight-ry: 65%;
+
+		mask-image:
+			radial-gradient(
+				ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at 70% 0%,
+				#000 0,
+				#000 var(--background-spotlight-mask-core),
+				rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+				rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+				transparent var(--background-spotlight-mask-feather)
+			),
+			radial-gradient(
+				ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at 10% 100%,
+				#000 0,
+				#000 var(--background-spotlight-mask-core),
+				rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+				rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+				transparent var(--background-spotlight-mask-feather)
+			);
+
+		-webkit-mask-image:
+			radial-gradient(
+				ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at 70% 0%,
+				#000 0,
+				#000 var(--background-spotlight-mask-core),
+				rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+				rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+				transparent var(--background-spotlight-mask-feather)
+			),
+			radial-gradient(
+				ellipse var(--background-spotlight-rx) var(--background-spotlight-ry) at 10% 100%,
+				#000 0,
+				#000 var(--background-spotlight-mask-core),
+				rgb(0 0 0 / 55%) calc(var(--background-spotlight-mask-core) + 18%),
+				rgb(0 0 0 / 18%) calc(var(--background-spotlight-mask-core) + 36%),
+				transparent var(--background-spotlight-mask-feather)
+			);
+	}
+
+	.ellipse {
+		top: -161px;
+		left: -259px;
+		width: 477px;
+		height: 518px;
+		bottom: auto;
+	}
+
+	.ellipseRight {
+		right: -259px;
+		bottom: -77px;
+		top: auto;
+	}
+
+	.background {
+		background: var(--color-bg-mobile);
 	}
 }
