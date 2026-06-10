@@ -153,8 +153,6 @@
 		animation: none;
 		--background-spotlight-rx: 55%;
 		--background-spotlight-ry: 65%;
-		--background-spotlight-mask-core: 28%;
-		--background-spotlight-mask-feather: 92%;
 
 		mask-image:
 			radial-gradient(
@@ -194,22 +192,17 @@
 	}
 
 	.ellipse {
-		position: absolute;
-		z-index: 0;
 		top: -161px;
 		left: -259px;
 		width: 477px;
 		height: 518px;
-		border-radius: 100%;
-		background: var(--gradient-radial);
-		filter: blur(100px);
+		bottom: auto;
 	}
 
 	.ellipseRight {
 		right: -259px;
 		bottom: -77px;
 		top: auto;
-		left: auto;
 	}
 
 	.background {
