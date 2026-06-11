@@ -12,6 +12,9 @@ for (const section of SECTIONS) {
 		await page.goto(`/#${section}`);
 		await page.waitForLoadState('networkidle');
 		await page.locator('[class*="ready"]').waitFor();
+		await page.getByTestId('preloader').waitFor({
+			state: 'detached',
+		});
 		await page.evaluate(
 			() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))),
 		);
