@@ -8,8 +8,7 @@ test('homepage loads', async ({ page }) => {
 });
 
 for (const section of SECTIONS) {
-	test(`screenshot: ${section}`, async ({ page, browserName }) => {
-		test.skip(browserName === 'webkit', 'webkit visual baseline not yet committed');
+	test(`screenshot: ${section}`, async ({ page }) => {
 		await page.goto(`/#${section}`);
 		await page.waitForLoadState('networkidle');
 		await page.locator('[class*="ready"]').waitFor();
