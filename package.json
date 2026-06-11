@@ -9,7 +9,11 @@
 		"lint": "eslint",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "playwright test",
+		"test:docker": "docker compose run --rm pw",
+		"test:update": "playwright test --update-snapshots",
+		"test:update:docker": "docker compose run --rm pw pnpm exec playwright test sections.spec.ts --project=webkit -u"
 	},
 	"lint-staged": {
 		"*.{ts,tsx}": [
