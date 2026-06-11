@@ -8,6 +8,12 @@
 	margin-top: var(--space-15);
 }
 
+@media (min-width: 769px) and (max-height: 830px) {
+	.container {
+		gap: 40px;
+	}
+}
+
 @media (max-width: 768px) {
 	.container {
 		padding-inline: var(--space-4);

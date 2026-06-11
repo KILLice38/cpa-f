@@ -11,6 +11,7 @@ type BackgroundProps = {
 export function Background({ type = 'primary' }: BackgroundProps) {
 	return (
 		<div className={clsx(styles.background, styles[type])}>
+			<div className={clsx(styles.grid)} />
 			<div className={clsx(styles.ellipse)} />
 			<div className={clsx(styles.ellipse, styles.ellipseRight)} />
 		</div>

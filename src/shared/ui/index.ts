@@ -17,3 +17,4 @@ export { Arrow } from './Arrow';
 export { MobileMenuRoot, MobileMenuButton } from './MobileMenu';
 export { MobileHeader } from './MobileHeader';
 export { OpenModalButton } from './OpenModalButton/OpenModalButton';
+export { PreloaderRoot, useLoading } from './Preloader';
