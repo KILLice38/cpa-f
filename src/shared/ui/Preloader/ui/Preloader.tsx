@@ -5,7 +5,7 @@ import { Logo } from '../../Logo';
 
 export function Preloader({ progress }: { progress: number }) {
 	return (
-		<div className={styles.wrapper}>
+		<div data-testid="preloader" className={styles.wrapper}>
 			<Background type="primary" />
 			<Container className={styles.container}>
 				<Logo className={styles.logo} variant="inverse" />
