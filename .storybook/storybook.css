@@ -1,0 +1,4 @@
+/* Override fullpage-scroll body lock so Storybook canvas scrolls normally */
+body {
+	overflow: auto !important;
+}
