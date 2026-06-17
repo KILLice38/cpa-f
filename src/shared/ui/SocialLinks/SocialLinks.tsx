@@ -15,13 +15,14 @@ const HERO_SOCIAL_LINKS: { network: SocialNetwork; href: string }[] = [
 
 type SocialLinksProps = {
 	className?: string;
+	id?: string;
 };
 
-export function SocialLinks({ className }: SocialLinksProps) {
+export function SocialLinks({ className, id }: SocialLinksProps) {
 	const t = useTranslations('SocialLinks');
 
 	return (
-		<div className={clsx(styles.container, className)}>
+		<div className={clsx(styles.container, className)} id={id}>
 			{HERO_SOCIAL_LINKS.map(({ network, href }) => (
 				<SocialLink key={network} href={href} label={t(network)}>
 					<SocialIcon network={network} />
