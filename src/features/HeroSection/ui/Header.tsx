@@ -15,7 +15,7 @@ export async function Header() {
 	const t = await getTranslations('Header');
 
 	return (
-		<header className={styles.header}>
+		<header className={styles.header} data-header>
 			<Container className={styles.container}>
 				<Link href="/" className={styles.logoLink} aria-label={t('logoAria')}>
 					<Logo variant="inverse" size="header" />

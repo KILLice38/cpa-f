@@ -11,7 +11,7 @@ type TasksGridProps = {
 
 export function TasksGrid({ description, tiles }: TasksGridProps) {
 	return (
-		<div className={styles.grid}>
+		<div className={styles.grid} data-multi-grid>
 			<BenefitCard description={description} />
 			{tiles.map((tile) => (
 				<Card key={tile.title} variant="task" title={tile.title}>

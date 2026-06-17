@@ -29,10 +29,6 @@
 	color: var(--color-text-primary);
 }
 
-.titleAccent {
-	color: var(--secondary-color);
-}
-
 .text {
 	margin-top: var(--space-3);
 	font-family: var(--second-family);
@@ -64,6 +60,28 @@
 	object-position: bottom right;
 	pointer-events: none;
 	z-index: -1;
+}
+.line {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 0.2em;
+}
+
+.wordWrapper {
+	position: relative;
+	overflow: hidden;
+	width: 8ch;
+	height: 0.9em;
+}
+
+.titleAccent {
+	color: var(--secondary-color);
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
 }
 
 @media (max-width: 768px) {
