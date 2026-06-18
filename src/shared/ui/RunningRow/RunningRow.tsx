@@ -1,14 +1,14 @@
 import clsx from 'clsx';
+import type { HTMLAttributes } from 'react';
 
 import { Logo } from '../Logo';
 import styles from './RunningRow.module.css';
 
-type RunningRowProps = {
+type RunningRowProps = HTMLAttributes<HTMLDivElement> & {
 	text: string;
-	className?: string;
 };
 
-export function RunningRow({ text, className }: RunningRowProps) {
+export function RunningRow({ text, className, ...rest }: RunningRowProps) {
 	const item = (
 		<span className={styles.item}>
 			<span className={styles.text}>{text}</span>
@@ -17,7 +17,7 @@ export function RunningRow({ text, className }: RunningRowProps) {
 	);
 
 	return (
-		<div className={clsx(styles.root, className)}>
+		<div className={clsx(styles.root, className)} {...rest}>
 			<span className="sr-only">{text}</span>
 			<div className={styles.inner} aria-hidden="true">
 				<div className={styles.track}>
