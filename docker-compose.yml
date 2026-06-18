@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  pw:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    working_dir: /app
+    environment:
+      - CI=true
+    volumes:
+      - ./e2e:/app/e2e
+      - ./playwright-report:/app/playwright-report
+
+    tty: true

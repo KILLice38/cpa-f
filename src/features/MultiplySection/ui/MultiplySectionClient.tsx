@@ -33,6 +33,7 @@ export function MultiplySectionClient({
 					height={360}
 					alt=""
 					aria-hidden="true"
+					loading="eager"
 					className={styles.image}
 				/>
 				<footer className={styles.footer}>
