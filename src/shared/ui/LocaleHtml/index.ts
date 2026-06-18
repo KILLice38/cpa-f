@@ -1,0 +1,1 @@
+export { LocaleHtml } from './LocaleHtml';

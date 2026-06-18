@@ -1,23 +1,15 @@
-import type { Metadata } from 'next';
-import '../globals.css';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-import { fontHalvarBreit, fontStolzl } from '@/shared/fonts';
 import { routing } from '@/shared/i18n';
-import { MobileMenuRoot, PreloaderRoot } from '@/shared/ui';
-
-export const metadata: Metadata = {
-	title: 'CPA-F',
-	description: '',
-};
+import { LocaleHtml, MobileMenuRoot, PreloaderRoot } from '@/shared/ui';
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
 	children,
 	params,
 }: Readonly<{
@@ -32,14 +24,11 @@ export default async function RootLayout({
 	setRequestLocale(locale);
 
 	return (
-		<html lang={locale} className={`${fontHalvarBreit.variable} ${fontStolzl.variable}`}>
-			<body>
-				<NextIntlClientProvider>
-					<MobileMenuRoot>
-						<PreloaderRoot>{children}</PreloaderRoot>
-					</MobileMenuRoot>
-				</NextIntlClientProvider>
-			</body>
-		</html>
+		<NextIntlClientProvider>
+			<LocaleHtml locale={locale} />
+			<MobileMenuRoot>
+				<PreloaderRoot>{children}</PreloaderRoot>
+			</MobileMenuRoot>
+		</NextIntlClientProvider>
 	);
 }

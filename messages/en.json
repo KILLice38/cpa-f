@@ -28,5 +28,8 @@
 		"button_0": "Join The Team",
 		"button_1": "Launch Now",
 		"button_2": "Partner Up"
+	},
+	"NotFound": {
+		"button": "Oops, take me back"
 	}
 }
