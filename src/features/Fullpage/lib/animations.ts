@@ -10,6 +10,22 @@ const selectHeroElements = (slide: HTMLElement) => ({
 	socials: slide.querySelector<HTMLElement>('#hero-socials'),
 });
 
+const selectBenefitsElements = (slide: HTMLElement) => ({
+	title: slide.querySelector<HTMLElement>('#benefits-title'),
+	row: slide.querySelector<HTMLElement>('[data-benefits-row]'),
+	left: slide.querySelector<HTMLElement>('[data-benefits-left]'),
+	image: slide.querySelector<HTMLElement>('[data-benefits-image]'),
+	cards: slide.querySelector<HTMLElement>('[data-benefits-cards]'),
+});
+
+const selectMultiplyElements = (slide: HTMLElement) => ({
+	title: slide.querySelector<HTMLElement>('#multiply-title'),
+	image: slide.querySelector<HTMLElement>('[data-multiply-image]'),
+	tabs: slide.querySelector<HTMLElement>('[data-multiply-tabs]'),
+	panel: slide.querySelector<HTMLElement>('[data-multiply-panel]'),
+	nav: slide.querySelector<HTMLElement>('[data-multiply-nav]'),
+});
+
 const selectTeamElements = (slide: HTMLElement) => {
 	const title = slide.querySelector<HTMLElement>('#multi-tasks-title');
 	const grid = slide.querySelector<HTMLElement>('[data-multi-grid]');
@@ -88,6 +104,108 @@ const heroLeave: SlideTransition = (tl, slide, direction) => {
 	tl.to(slide, { yPercent: direction === 1 ? -100 : 100, duration: 0, ease: EASE }, '>');
 };
 
+const benefitsEnter: SlideTransition = (tl, slide) => {
+	const { title, row, left, image, cards } = selectBenefitsElements(slide);
+
+	tl.to(slide, { yPercent: 0, duration: 0, ease: EASE });
+
+	tl.add('first');
+	tl.add('second', `first+=${DURATION}`);
+
+	if (title) {
+		tl.fromTo(
+			title,
+			{ y: 400, autoAlpha: 0 },
+			{ y: 0, autoAlpha: 1, duration: DURATION, ease: EASE },
+			'first',
+		);
+	}
+
+	if (row) {
+		tl.fromTo(
+			row,
+			{ y: 400, autoAlpha: 0 },
+			{ y: 0, autoAlpha: 1, duration: DURATION, ease: EASE },
+			'first',
+		);
+	}
+
+	if (left) {
+		tl.fromTo(
+			left,
+			{ xPercent: -130, autoAlpha: 0 },
+			{ autoAlpha: 1, xPercent: 0, duration: DURATION, ease: EASE },
+			'second',
+		);
+	}
+
+	if (cards) {
+		tl.fromTo(
+			cards,
+			{ xPercent: 150, autoAlpha: 0 },
+			{ autoAlpha: 1, xPercent: 0, duration: DURATION, ease: EASE },
+			'second',
+		);
+	}
+
+	if (image) {
+		tl.fromTo(image, { xPercent: 310 }, { xPercent: 0, duration: DURATION, ease: EASE }, 'second');
+	}
+};
+
+const benefitsLeave: SlideTransition = (tl, slide, direction) => {
+	tl.to(slide, { yPercent: direction === 1 ? -100 : 100, duration: DURATION, ease: EASE });
+};
+
+const multiplyEnter: SlideTransition = (tl, slide) => {
+	const { title, image, tabs, panel, nav } = selectMultiplyElements(slide);
+
+	tl.to(slide, { yPercent: 0, duration: 0, ease: EASE });
+
+	tl.add('first');
+	tl.add('second', `first+=${DURATION}`);
+	tl.add('nav', `second+=${DURATION}`);
+
+	if (title) {
+		tl.fromTo(
+			title,
+			{ y: 340, autoAlpha: 0 },
+			{ y: 0, autoAlpha: 1, duration: DURATION, ease: EASE },
+			'first',
+		);
+	}
+
+	if (image) {
+		tl.fromTo(
+			image,
+			{ y: 340, autoAlpha: 0 },
+			{ y: 0, autoAlpha: 1, duration: DURATION, ease: EASE },
+			'first',
+		);
+	}
+
+	if (tabs) {
+		tl.fromTo(tabs, { autoAlpha: 0 }, { autoAlpha: 1, duration: DURATION, ease: EASE }, 'second');
+	}
+
+	if (panel) {
+		tl.fromTo(panel, { autoAlpha: 0 }, { autoAlpha: 1, duration: DURATION, ease: EASE }, 'second');
+	}
+
+	if (nav) {
+		tl.fromTo(
+			nav,
+			{ y: 80, autoAlpha: 0 },
+			{ y: 0, autoAlpha: 1, duration: DURATION, ease: EASE },
+			'nav',
+		);
+	}
+};
+
+const multiplyLeave: SlideTransition = (tl, slide, direction) => {
+	tl.to(slide, { yPercent: direction === 1 ? -100 : 100, duration: DURATION, ease: EASE });
+};
+
 const teamEnter: SlideTransition = (tl, slide) => {
 	const { title, mainCard, extraCards } = selectTeamElements(slide);
 
@@ -140,6 +258,14 @@ export const slideAnimations: Record<string, SlideAnimations> = {
 	hero: {
 		enter: heroEnter,
 		leave: heroLeave,
+	},
+	benefits: {
+		enter: benefitsEnter,
+		leave: benefitsLeave,
+	},
+	'join-us': {
+		enter: multiplyEnter,
+		leave: multiplyLeave,
 	},
 	team: {
 		enter: teamEnter,

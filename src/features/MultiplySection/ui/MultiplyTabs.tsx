@@ -42,7 +42,12 @@ export function MultiplyTabs({ tabs, buttonLabels }: MultiplyTabsProps) {
 
 	return (
 		<div className={styles.root}>
-			<ul role="tablist" aria-label="Multiply options" className={styles.tabList}>
+			<ul
+				role="tablist"
+				aria-label="Multiply options"
+				className={styles.tabList}
+				data-multiply-tabs
+			>
 				{tabs.map((tab, i) => (
 					<li key={tab.title} role="presentation">
 						<button
@@ -70,6 +75,7 @@ export function MultiplyTabs({ tabs, buttonLabels }: MultiplyTabsProps) {
 				aria-labelledby={`multiply-tab-${activeIndex}`}
 				tabIndex={0}
 				className={styles.panel}
+				data-multiply-panel
 			>
 				<p className={styles.step}>{active?.steps.step_1}</p>
 				<Arrow size="lg" aria-hidden="true" />
