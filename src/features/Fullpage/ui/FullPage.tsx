@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import { SectionNavContext } from '@/shared/sectionNav';
-import { Background, MobileHeader, type BackgroundType } from '@/shared/ui';
+import { Background, MobileHeader, useLoading, type BackgroundType } from '@/shared/ui';
 
 import styles from './FullPage.module.css';
 import { slideAnimations } from '../lib/animations';
@@ -26,6 +26,8 @@ export function FullPage({ slides }: { slides: Slide[] }) {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [ready, setReady] = useState(false);
 
+	const { isLoaded } = useLoading();
+
 	const indexById = useMemo(() => new Map(slides.map((slide, i) => [slide.id, i])), [slides]);
 
 	useEffect(() => {
@@ -45,6 +47,7 @@ export function FullPage({ slides }: { slides: Slide[] }) {
 		getInitialIndex,
 		onChange: setActiveIndex,
 		onReady: setReady,
+		isLoaded,
 	});
 
 	const goToId = useCallback(

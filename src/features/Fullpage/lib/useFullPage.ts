@@ -19,6 +19,7 @@ type UseFullPageParams = {
 	getInitialIndex: () => number;
 	onChange: (index: number) => void;
 	onReady: (ready: boolean) => void;
+	isLoaded: boolean;
 };
 
 export function useFullPage({
@@ -29,8 +30,11 @@ export function useFullPage({
 	getInitialIndex,
 	onChange,
 	onReady,
+	isLoaded,
 }: UseFullPageParams) {
 	useEffect(() => {
+		if (!isLoaded) return;
+
 		const slides = slidesRef.current;
 		if (slides.length === 0) return;
 
@@ -44,6 +48,13 @@ export function useFullPage({
 
 			const start = Math.min(Math.max(getInitialIndex(), 0), count - 1);
 			gsap.set(slides, { yPercent: (i) => (i < start ? -100 : i > start ? 100 : 0) });
+
+			const initialTransition = animationsRef.current[start]?.enter;
+			if (initialTransition) {
+				const initTl = gsap.timeline({ defaults: { duration, ease: 'power2.inOut' } });
+				initialTransition(initTl, slides[start], 1);
+			}
+
 			onReady(true);
 			onChange(start);
 
@@ -115,5 +126,5 @@ export function useFullPage({
 		});
 
 		return () => mm.revert();
-	}, [slidesRef, animationsRef, apiRef, count, getInitialIndex, onChange, onReady]);
+	}, [slidesRef, animationsRef, apiRef, count, getInitialIndex, onChange, onReady, isLoaded]);
 }
