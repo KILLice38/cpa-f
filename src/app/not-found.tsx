@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { heroImg } from '@/shared/assets';
 import { Background, Container } from '@/shared/ui';
 
-import { NotFoundButton } from './[locale]/NotFoundButton';
 import styles from './not-found.module.css';
+import { NotFoundButton } from './NotFoundButton';
 
 export default function NotFound() {
 	return (

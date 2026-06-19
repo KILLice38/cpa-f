@@ -100,6 +100,12 @@ const eslintConfig = defineConfig([
 			'@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
 		},
 	},
+	{
+		files: ['src/app/NotFoundButton.tsx'],
+		rules: {
+			'no-restricted-imports': 'off',
+		},
+	},
 	prettier,
 	globalIgnores([
 		// Default ignores of eslint-config-next:
